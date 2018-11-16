@@ -1,0 +1,19 @@
+#!/bin/bash -l
+
+# run a script in matlab batch mode
+# give a matlab script file as first argument
+echo running matlab script $1 in batch mode
+
+echo "% Matlab batch file" > mb_tmp.m
+cat $1 >> mb_tmp.m
+echo "exit" >> mb_tmp.m
+
+unset DISPLAY
+
+nohup matlab -nodisplay -nosplash -nojvm -nodesktop >& mb_tmp.out < mb_tmp.m
+
+cat mb_tmp.out
+
+# clean up
+/bin/rm mb_tmp.m
+/bin/rm mb_tmp.out
