@@ -2,7 +2,9 @@
 
 ### Copy input files from external archive (search ISMIP6 ftp)
 ```cp <ExtArchive>/BedMachineGreenland0d6km.nc ../Data/BedMachine/```
+
 ```cp <ExtArchive>/grimask_BedMachine_01000m.nc ../Data/BedMachine/```
+
 ```cp <ExtArchive>/ISMIP6_Ocean_Regions_01000m.nc ../Data/Basins/```
 
 ### Prepare Bedmachine data
