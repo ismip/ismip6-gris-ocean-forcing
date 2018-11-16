@@ -1,9 +1,9 @@
 # Prepare input data 
 
-# Copy input files from external archive
-cp Archive/BedMachineGreenland0d6km.nc ../Data/BedMachine/
-cp Archive/grimask_BedMachine_01000m.nc ../Data/BedMachine/
-cp Archive/ISMIP6_Ocean_Regions_01000m.nc ../Data/Basins
+# Copy input files from external archive (search ISMIP6 ftp)
+cp <ExtArchive>/BedMachineGreenland0d6km.nc ../Data/BedMachine/
+cp <ExtArchive>/grimask_BedMachine_01000m.nc ../Data/BedMachine/
+cp <ExtArchive>/ISMIP6_Ocean_Regions_01000m.nc ../Data/Basins/
 
 # Note Bedmachine data has to be processed with inverted y axis compared to original
 '''
