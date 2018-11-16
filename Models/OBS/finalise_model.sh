@@ -5,13 +5,16 @@
 pgdfs=/Volumes/ISMIP6/Grids/GrIS/GDFs
 pwgts=/Volumes/ISMIP6/Grids/GrIS/weights
 pfts=/Volumes/ISMIP6/Grids/GrIS/SFs
+
 # input/output grid description files
 ingdf=grid_ISMIP6_GrIS_01000m.nc
 outgdf=grid_ISMIP6_GrIS_08000m.nc
 wgts=weights_ycon_e01000m_e08000m.nc
+
 # files
 infile=retreatmasks_test00_OBS_01000m.nc
 outfile=retreatmasks_test00_OBS_08000m.nc
+
 ### With weights file
 # produce remap weights file
 #cdo genycon,${pgdfs}/${outgdf} -setgrid,${pgdfs}/${ingdf} ${infile} ${pwgts}/${wgts}

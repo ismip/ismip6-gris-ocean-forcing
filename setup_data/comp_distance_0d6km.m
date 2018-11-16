@@ -1,6 +1,6 @@
 % compute distances
 clear
-b=ncload('../Data/BedMachine/BedMachineGreenland0d6km.nc');
+b=ncload('../Data/BedMachine/BedMachineGreenlandMasks0d6km.nc');
 
 % scale in km
 sc = 0.6;

@@ -8,7 +8,7 @@ ascenario='test00'
 filename=['../Models/' amodel '/retreatmasks_' ascenario '_' amodel '_01000m.nc'];
 
 % load Basin masks
-bas = ncload('../../Basins/ISMIP6_Ocean_regions_2018_11_06/ISMIP6_Ocean_Regions_01000m.nc');
+bas = ncload('../Data/Basins/ISMIP6_Ocean_Regions_01000m.nc');
 
 % (bas.basin11 + bas.basin12 + bas.basin13 + bas.basin14) > 0;
 NO = bas.IDs == 1;

@@ -11,7 +11,7 @@ cp ../Models/${amodel}/sftgif_01000m.nc ./
 # Interpolation of mask from diagnostic grid to obs grid
 # Compute distances from calving front
 # Remap dist back to diagnostic grid
-matlabbatch meta_mat.m
+../toolbox/matlabbatch meta_mat.m
 
 # take partial mask into account
 ncap2 -A -s "rweight=(double(sftgif)); where(sftgif>0) rweight=(double(sftgif)); elsewhere rweight=0;" -v sftgif_01000m.nc weight_0d6_ISMIP6_GrIS_01km.nc
