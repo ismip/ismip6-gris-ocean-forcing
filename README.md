@@ -2,7 +2,7 @@
 Matlab/Shell workflow for generating Greenland ocean forcing for the ISMIP6 activity
 
 # Workflow
-create input data (once)
+### create input data (once)
 ```setup_data/```
 
 ### Use an existing scenario or build a test scenario (once per scenario) 
