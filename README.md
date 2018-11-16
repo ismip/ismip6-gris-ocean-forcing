@@ -1,14 +1,14 @@
 # ismip6-gris-ocean-forcing
 Matlab/Shell workflow for generating Greenland ocean forcing for the ISMIP6 activity
 
-## Workflow
-# create input data
+# Workflow
+## create input data
 setup_data/
 
-# distance calculations for specific ice mask 
+## distance calculations for specific ice mask 
 mask2dist/
 
-# retreat mask scenario
+## retreat mask scenario
 scenario/
 
 
