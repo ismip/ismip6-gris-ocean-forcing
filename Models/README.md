@@ -9,4 +9,6 @@ retreatmasks_<scenario>_<MODEL>_01000m.nc
 ```
 
 # Test based on observed ice mask
-OBS/ test based
+```
+OBS/
+```
