@@ -32,4 +32,6 @@ xlabel('Time [yr]')
 ylabel('Retreat [km]')
 print -dpng -r300 retreat_scenarios
 
-save retreat_test.mat retreat
+info = 'Regions 1-7: NO, NE, CE, SE, SW, CW ,NW'
+
+save retreat_test.mat retreat info
