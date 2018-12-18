@@ -1,30 +1,25 @@
 #!/bin/bash
 # Build retreat distance map based on modelled ice mask
 
-# Model name with directory in 'Models' that contains sftgif_01000m.nc
+# Model name with directory in 'Models' that contains sftgif.nc
 amodel=OBS
-#amodel=TEST16
-#amodel=TEST08
+#amodel=IMAUICE16
 
-cp ../Models/${amodel}/sftgif_01000m.nc ./
+cp ../Models/${amodel}/sftgif.nc ./sftgif.nc
 
-# Interpolation of mask from diagnostic grid to obs grid
+# Interpolation of mask from model grid to obs grid
 # Compute distances from calving front
-# Remap dist back to diagnostic grid
 ../toolbox/matlabbatch meta_mat.m
 
 # take partial mask into account
-ncap2 -A -s "rweight=(double(sftgif)); where(sftgif>0) rweight=(double(sftgif)); elsewhere rweight=0;" -v sftgif_01000m.nc weight_0d6_ISMIP6_GrIS_01km.nc
-ncap2 -O -s "ww=weight*rweight" weight_0d6_ISMIP6_GrIS_01km.nc weight_0d6_ISMIP6_GrIS_01km.nc
-
-# add x,y from template 
-pfts=/Volumes/ISMIP6/Grids/GrIS/SFs
-ncks -A -v x,y ${pfts}/af2_ISMIP6_GrIS_01000m.nc dist_0d6_ISMIP6_GrIS_01km.nc
+ncap2 -A -s "rweight=(double(grmask)); where(grmask>0) rweight=(double(grmask)); elsewhere rweight=0;" -v grmask_M_0d6km.nc weight_0d6_ISMIP6_GrIS.nc
+ncap2 -O -s "ww=rweight" weight_0d6_ISMIP6_GrIS.nc weight_0d6_ISMIP6_GrIS.nc
 
 # move results to model directory
-/bin/mv dist_0d6_ISMIP6_GrIS_01km.nc ../Models/${amodel}/
-/bin/mv weight_0d6_ISMIP6_GrIS_01km.nc ../Models/${amodel}/
+/bin/mv dist0d6km_M.nc ../Models/${amodel}/
+/bin/mv weight_0d6_ISMIP6_GrIS.nc ../Models/${amodel}/
+/bin/mv grmask_M_0d6km.nc ../Models/${amodel}/sftgif_0d6.nc
 /bin/mv *.png ../Models/${amodel}/
 
 # clean up
-/bin/rm sftgif_01000m.nc
+/bin/rm sftgif.nc
