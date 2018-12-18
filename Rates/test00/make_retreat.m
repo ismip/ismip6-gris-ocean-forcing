@@ -10,11 +10,11 @@
 
 tot = [8,10,12,12,10,15,10]*1.5;
 
-time = 0:1:100;
+time = 0:1:105;
 
 lin = 0:(1/80):1;
 
-retreat = zeros(7,101);
+retreat = zeros(7,106);
 
 for k=1:7
     retreat(k,:) = tot(k);
