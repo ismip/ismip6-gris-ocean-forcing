@@ -1,11 +1,11 @@
 # Prepare input data 
 
 ### Copy input files from external archive (search ISMIP6 ftp)
+```cp <ExtArchive>/sftgif_BedMachineGreenland_01000m.nc ../Data/BedMachine/```
+
 ```cp <ExtArchive>/BedMachineGreenland0d6km.nc ../Data/BedMachine/```
 
-```cp <ExtArchive>/grimask_BedMachine_01000m.nc ../Data/BedMachine/```
-
-```cp <ExtArchive>/ISMIP6_Ocean_Regions_01000m.nc ../Data/Basins/```
+```cp <ExtArchive>/ISMIP6_Ocean_Regions_0d6km.nc ../Data/Basins/```
 
 ### Prepare Bedmachine data
 Note: Bedmachine data has to be processed with inverted y axis compared to original

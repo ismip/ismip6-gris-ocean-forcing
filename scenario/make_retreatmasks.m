@@ -1,4 +1,5 @@
-% Combine distance map and retreat scenario to get a time dependent ice fraction mask.
+% Combine distance map and retreat scenario to get a time dependent ice fraction mask
+% Interpolate to model grid by binning
  
 clear
 
@@ -15,12 +16,11 @@ flg_plot=0;
 % read days for time axis 
 caldays = load('../Data/Grid/days_1900-2300.txt');
 
-filename=['../Models/' amodel '/retreatmasks_' ascenario '_' amodel '_01000m.nc'];
+filename=['../Models/' amodel '/retreatmasks_' ascenario '_' amodel '.nc'];
 
 % load Basin masks
-bas = ncload('../Data/Basins/ISMIP6_Ocean_Regions_01000m.nc');
+bas = ncload(['../Data/Basins/ISMIP6_Ocean_Regions_01000m.nc']);
 
-% (bas.basin11 + bas.basin12 + bas.basin13 + bas.basin14) > 0;
 NO = bas.IDs == 1;
 NE = bas.IDs == 2;
 CE = bas.IDs == 3;
@@ -64,7 +64,10 @@ end
 
 
 for k=1:nt
+%for k=1:1
     k
+    refr2 = single(zeros(nx,ny));
+
 % retreat after n years
     retr = (dist.dist_bin < nor(k));
     refr = max(double(ima.sftgif) - retr.*wght,0);

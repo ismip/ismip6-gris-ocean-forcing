@@ -10,11 +10,11 @@
 
 tot = [8,10,12,12,10,15,10]*1.5;
 
-time = 0:1:100;
+time = 0:1:105;
 
 lin = 0:(1/80):1;
 
-retreat = zeros(7,101);
+retreat = zeros(7,106);
 
 for k=1:7
     retreat(k,:) = tot(k);
@@ -32,4 +32,6 @@ xlabel('Time [yr]')
 ylabel('Retreat [km]')
 print -dpng -r300 retreat_scenarios
 
-save retreat_test.mat retreat
+info = 'Regions 1-7: NO, NE, CE, SE, SW, CW ,NW'
+
+save retreat_test.mat retreat info

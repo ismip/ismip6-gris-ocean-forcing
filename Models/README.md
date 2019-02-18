@@ -1,11 +1,11 @@
 # Sub-directories for each model (initial state)
-Need to contain the initial ice mask to start with
+Need to contain the initial ice mask on the model grid to start with
 ```
-sftgif_01000m.nc
+sftgif.nc
 ```
 Will contain intermediate files and final retreat mask after processing 
 ```
-retreatmasks_<scenario>_<MODEL>_01000m.nc
+retreatmasks_<scenario>_<MODEL>.nc
 ```
 
 # Test based on observed ice mask

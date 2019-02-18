@@ -36,8 +36,8 @@ hold on
 contour(b.wmask',[0.5,0.5],'k')
 set(gcf,'Position', [142 74 609 1031]);
 
-caxis([0,900])
-print -dpng -r300 bwdist_0d6km_900km
+caxis([0,1000])
+print -dpng -r300 bwdist_0d6km_1000km
 
 caxis([0,100])
 print -dpng -r300 bwdist_0d6km_100km

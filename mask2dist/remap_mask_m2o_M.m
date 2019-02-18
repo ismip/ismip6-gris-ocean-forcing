@@ -1,6 +1,6 @@
 % Matlab interpolation from model to obs grid
 clear
-d1 = ncload('sftgif_01000m.nc');
+d1 = ncload('sftgif.nc');
 g1 = ncload('../Data/dist/dist0d6km.nc');
 
 [yd,xd] = meshgrid(double(d1.y),double(d1.x));
