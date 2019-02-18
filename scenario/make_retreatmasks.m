@@ -101,10 +101,6 @@ for k=1:nt
     retr = (dist.dist_bin < nwr(k));
     refr = max(double(ima.sftgif) - retr.*wght ,0);
     refr3(:,:,k) = refr3(:,:,k) + refr.*NW;
-
-    % Wite out
-    res = 1;
-
 end
 
 shade(refr3(:,:,k))
