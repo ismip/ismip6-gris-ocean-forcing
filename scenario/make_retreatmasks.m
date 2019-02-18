@@ -8,6 +8,8 @@ addpath('../toolbox')
 %amodel='IMAUICE16'
 amodel='OBS'
 ascenario='MIROC5-rcp85-Rmed'
+%ascenario='MIROC5-rcp85-Rhigh'
+%ascenario='MIROC5-rcp85-Rlow'
 version='v1'
 
 % flag for plotting 
@@ -32,7 +34,7 @@ NW = bas.IDs == 7;
 % load regional retreats
 load(['../Rates/' version '/' ascenario '/retreat.mat']);
 % retreat is assumed positive from here on
-rs = -retreat(:,1:87);
+rs = - retreat(:,1:87);
 nor = rs(1,:);
 ner = rs(2,:);
 cer = rs(3,:);
@@ -57,17 +59,9 @@ y = 1:ny;
 time = 2014:1:2100; 
 refr3 = single(zeros(nx,ny,length(time)));
 
-% write out
-if exist(filename)
-     delete(filename)
-end
-
-
 for k=1:nt
 %for k=1:1
     k
-    refr2 = single(zeros(nx,ny));
-
 % retreat after n years
     retr = (dist.dist_bin < nor(k));
     refr = max(double(ima.sftgif) - retr.*wght,0);
