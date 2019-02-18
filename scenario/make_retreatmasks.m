@@ -2,8 +2,18 @@
  
 clear
 
+addpath('../toolbox')
+
+%amodel='IMAUICE16'
 amodel='OBS'
-ascenario='test00'
+ascenario='MIROC5-rcp85-Rmed'
+version='v1'
+
+% flag for plotting 
+flg_plot=0;
+
+% read days for time axis 
+caldays = load('../Data/Grid/days_1900-2300.txt');
 
 filename=['../Models/' amodel '/retreatmasks_' ascenario '_' amodel '_01000m.nc'];
 
@@ -20,8 +30,9 @@ CW = bas.IDs == 6;
 NW = bas.IDs == 7;
 
 % load regional retreats
-load(['../Rates/' ascenario '/retreat_test.mat']);
-rs = retreat(:,1:101);
+load(['../Rates/' version '/' ascenario '/retreat.mat']);
+% retreat is assumed positive from here on
+rs = -retreat(:,1:87);
 nor = rs(1,:);
 ner = rs(2,:);
 cer = rs(3,:);
@@ -38,11 +49,19 @@ wght = max(wght.ww,0);
 
 nx = size(ima.sftgif,1);
 ny = size(ima.sftgif,2);
-nt = length(rs);
+nt = size(rs,2);
 x = 1:nx;
 y = 1:ny;
-time = 0:1:100;
+% timer
+%time = 2014:1:2016; 
+time = 2014:1:2100; 
 refr3 = single(zeros(nx,ny,length(time)));
+
+% write out
+if exist(filename)
+     delete(filename)
+end
+
 
 for k=1:nt
     k
@@ -79,28 +98,35 @@ for k=1:nt
     retr = (dist.dist_bin < nwr(k));
     refr = max(double(ima.sftgif) - retr.*wght ,0);
     refr3(:,:,k) = refr3(:,:,k) + refr.*NW;
+
+    % Wite out
+    res = 1;
+
 end
 
-    shade(refr3(:,:,k))
+shade(refr3(:,:,k))
 
-% plot retreats
-co = get(0,'DefaultAxesColorOrder');
-figure
-hold on; box on;
-plot(time,nor,'Color',co(1,:))
-plot(time,ner,'Color',co(2,:))
-plot(time,cer,'Color',co(3,:))
-plot(time,ser,'Color',co(4,:))
-plot(time,swr,'Color',co(5,:))
-plot(time,cwr,'Color',co(6,:))
-plot(time,nwr,'Color',co(7,:))
-legend({'NO','NE','CE','SE','SW','CW','NW'},'Location','nw')
+if (flg_plot);
 
-% write out
-if exist(filename)
-     delete(filename)
+    % plot retreats
+    co = get(0,'DefaultAxesColorOrder');
+    figure
+    hold on; box on;
+    plot(time,nor,'Color',co(1,:))
+    plot(time,ner,'Color',co(2,:))
+    plot(time,cer,'Color',co(3,:))
+    plot(time,ser,'Color',co(4,:))
+    plot(time,swr,'Color',co(5,:))
+    plot(time,cwr,'Color',co(6,:))
+    plot(time,nwr,'Color',co(7,:))
+    legend({'NO','NE','CE','SE','SW','CW','NW'},'Location','nw')
+
 end
-nccreate(filename,'sftgif', 'Dimensions', {'x', nx, 'y', ny, 'time', inf},'Datatype','single');
-nccreate(filename,'time', 'Dimensions', {'time', inf});
-ncwrite(filename, 'sftgif', refr3);
-ncwrite(filename, 'time', time);
+
+% time axis
+timestamp = caldays(time-1900+1,3);
+time_bounds = [caldays(time-1900+1,2), caldays(time-1900+2,2)];
+
+res = 1;
+ncwrite_GrIS_retreatmasks(filename, refr3, 'sftgif' , {'x','y','t'}, res, timestamp, time_bounds);
+%
