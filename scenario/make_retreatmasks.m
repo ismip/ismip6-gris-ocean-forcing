@@ -3,15 +3,19 @@
  
 clear
 
+%amodel='OBS'
+
+amodel='IMAUICE16'
+ascenario='MIROC5-rcp85-Rmed'
+aver = 'v1'
+
 % flag for plotting 
 flg_plot=0;
 
 addpath('../toolbox')
 
-amodel='OBS'
-%amodel='IMAUICE16'
-
-ascenario='test00'
+% read days for time axis 
+caldays = load('../Data/Grid/days_1900-2300.txt');
 
 filename=['../Models/' amodel '/retreatmasks_' ascenario '_' amodel '.nc'];
 
@@ -27,8 +31,9 @@ CW = bas.IDs == 6;
 NW = bas.IDs == 7;
 
 % load regional retreats
-load(['../Rates/' ascenario '/retreat_test.mat']);
-rs = retreat(:,1:106);
+load(['../Rates/' aver '/' ascenario '/retreat.mat']);
+% variable retreat is positive for a retreating glacier  
+rs = - retreat(:,1:87);
 nor = rs(1,:);
 ner = rs(2,:);
 cer = rs(3,:);
@@ -46,8 +51,8 @@ wght = max(wght.ww,0);
 
 nx = size(ima.grmask,1);
 ny = size(ima.grmask,2);
-nt = length(rs);
-time = 0:1:105;
+nt = size(rs,2);
+time = 2014:1:2100; 
 
 nxm = length(g1.x);
 nym = length(g1.y);
@@ -108,17 +113,6 @@ refr3(:,:,k) = wmask;
 end
 
 
-% write out
-if exist(filename)
-     delete(filename)
-end
-nccreate(filename,'sftgif', 'Dimensions', {'x', nxm, 'y', nym, 'time', inf},'Datatype','single');
-nccreate(filename,'time', 'Dimensions', {'time', inf});
-ncwrite(filename, 'sftgif', refr3);
-ncwrite(filename, 'time', time*31556926.);
-ncwriteatt(filename,'time','units','seconds since 1995-1-1');
-
-
 if (flg_plot)
     % plot retreats
     co = get(0,'DefaultAxesColorOrder');
@@ -133,3 +127,18 @@ if (flg_plot)
     plot(time,nwr,'Color',co(7,:))
     legend({'NO','NE','CE','SE','SW','CW','NW'},'Location','nw')
 end
+
+if exist(filename)
+     delete(filename)
+end
+nccreate(filename,'sftgif', 'Dimensions', {'x', nxm, 'y', nym, 'time', inf},'Datatype','single');
+nccreate(filename,'time', 'Dimensions', {'time', inf});
+ncwrite(filename, 'sftgif', refr3);
+ncwrite(filename, 'time', time*31556926.);
+ncwriteatt(filename,'time','units','seconds since 1995-1-1');
+
+%% time axis
+timestamp = caldays(time-1900+1,3);
+time_bounds = [caldays(time-1900+1,2), caldays(time-1900+2,2)];
+
+ncwrite_GrIS_retreatmasks(filename, refr3, 'sftgif' ,g1.x,g1.y,timestamp, time_bounds);
