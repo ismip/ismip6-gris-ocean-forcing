@@ -4,6 +4,8 @@ clear
 % flag for plotting 
 flg_plot=0;
 
+addpath('../toolbox')
+
 b=ncload('../Data/BedMachine/BedMachineGreenlandMasks0d6km.nc');
 
 % scale in km
