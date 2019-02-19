@@ -1,5 +1,9 @@
 % compute distances
 clear
+
+% flag for plotting 
+flg_plot=0;
+
 b=ncload('../Data/BedMachine/BedMachineGreenlandMasks0d6km.nc');
 
 % scale in km
@@ -24,20 +28,22 @@ dist(isinf(dist)) = 99999;
 
 ncwrite2d_n('../Data/dist/dist0d6km.nc',double(dist),'dist')
 
-% plotting
-shade(dist)
-axis equal
-%colororder = distinguishable_colors(150);
-%set(0,'DefaultAxesColorOrder', colororder)
-% colormap lines(50)
-load('cmap_banded.mat');
-colormap(cmap)
-hold on
-contour(b.wmask',[0.5,0.5],'k')
-set(gcf,'Position', [142 74 609 1031]);
+if (flg_plot)
+    % plotting
+    shade(dist)
+    axis equal
+    %colororder = distinguishable_colors(150);
+    %set(0,'DefaultAxesColorOrder', colororder)
+    % colormap lines(50)
+    load('cmap_banded.mat');
+    colormap(cmap)
+    hold on
+    contour(b.wmask',[0.5,0.5],'k')
+    set(gcf,'Position', [142 74 609 1031]);
 
-caxis([0,1000])
-print -dpng -r300 bwdist_0d6km_1000km
+    caxis([0,1000])
+    print -dpng -r300 bwdist_0d6km_1000km
 
-caxis([0,100])
-print -dpng -r300 bwdist_0d6km_100km
+    caxis([0,100])
+    print -dpng -r300 bwdist_0d6km_100km
+end

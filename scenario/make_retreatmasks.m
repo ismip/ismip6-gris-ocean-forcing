@@ -3,6 +3,9 @@
  
 clear
 
+% flag for plotting 
+flg_plot=0;
+
 addpath('../toolbox')
 
 amodel='OBS'
@@ -116,17 +119,17 @@ ncwrite(filename, 'time', time*31556926.);
 ncwriteatt(filename,'time','units','seconds since 1995-1-1');
 
 
-
-% plot retreats
-co = get(0,'DefaultAxesColorOrder');
-figure
-hold on; box on;
-plot(time,nor,'Color',co(1,:))
-plot(time,ner,'Color',co(2,:))
-plot(time,cer,'Color',co(3,:))
-plot(time,ser,'Color',co(4,:))
-plot(time,swr,'Color',co(5,:))
-plot(time,cwr,'Color',co(6,:))
-plot(time,nwr,'Color',co(7,:))
-legend({'NO','NE','CE','SE','SW','CW','NW'},'Location','nw')
-
+if (flg_plot)
+    % plot retreats
+    co = get(0,'DefaultAxesColorOrder');
+    figure
+    hold on; box on;
+    plot(time,nor,'Color',co(1,:))
+    plot(time,ner,'Color',co(2,:))
+    plot(time,cer,'Color',co(3,:))
+    plot(time,ser,'Color',co(4,:))
+    plot(time,swr,'Color',co(5,:))
+    plot(time,cwr,'Color',co(6,:))
+    plot(time,nwr,'Color',co(7,:))
+    legend({'NO','NE','CE','SE','SW','CW','NW'},'Location','nw')
+end
