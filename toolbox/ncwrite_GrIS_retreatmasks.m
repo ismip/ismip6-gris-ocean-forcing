@@ -1,6 +1,6 @@
-function ncwrite_GrIS(ancfile,avar,varname,dimnames,res,time, time_bounds)
+function ncwrite_GrIS(ancfile,avar,varname,x1,y1,time, time_bounds)
 % write variables to a netcdf file and add ISMIP6 specific information
-% function ncwrite_GrIS(ancfile,avar,varname, dimnames, res, time, time_bounds)
+% function ncwrite_GrIS(ancfile,avar,varname,x1,y1,time,time_bounds)
 
 % TODO: check input arguments and sizes
 
@@ -9,21 +9,8 @@ if exist(ancfile, 'file') ~= 0;
     delete(ancfile)
 end
 
-% Standard ISMIP6 coordinates
-dx = -720000;
-dy = -3450000;
-nx1=1681;
-ny1=2881;
-nx=(nx1-1)/res+1;
-ny=(ny1-1)/res+1;
-xd=single(zeros(nx,1));
-yd=single(zeros(ny,1));
-for ip=1:nx
-    xd(ip) = (dx + (ip-1) * res*1000);
-end
-for jp=1:ny
-    yd(jp) = (dy + (jp-1) * res*1000);
-end
+nx = length(x1);
+ny = length(y1);
 nt = size(avar,3);
 
 % write out
@@ -35,8 +22,8 @@ nccreate(ancfile,'time', 'Dimensions', {'time', inf});
 nccreate(ancfile,'time_bounds','Dimensions',{'nv',2,'time',nt}, 'Datatype','single');
 % write
 ncwrite(ancfile, varname, avar);
-ncwrite(ancfile,'x',xd);
-ncwrite(ancfile,'y',yd);
+ncwrite(ancfile,'x',x1);
+ncwrite(ancfile,'y',y1);
 ncwrite(ancfile, 'time', time);
 ncwrite(ancfile, 'time_bounds', time_bounds');
 

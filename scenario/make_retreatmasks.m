@@ -3,17 +3,16 @@
  
 clear
 
-addpath('../toolbox')
+%amodel='OBS'
 
-%amodel='IMAUICE16'
-amodel='OBS'
+amodel='IMAUICE16'
 ascenario='MIROC5-rcp85-Rmed'
-%ascenario='MIROC5-rcp85-Rhigh'
-%ascenario='MIROC5-rcp85-Rlow'
-version='v1'
+aver = 'v1'
 
 % flag for plotting 
 flg_plot=0;
+
+addpath('../toolbox')
 
 % read days for time axis 
 caldays = load('../Data/Grid/days_1900-2300.txt');
@@ -32,8 +31,8 @@ CW = bas.IDs == 6;
 NW = bas.IDs == 7;
 
 % load regional retreats
-load(['../Rates/' version '/' ascenario '/retreat.mat']);
-% retreat is assumed positive from here on
+load(['../Rates/' aver '/' ascenario '/retreat.mat']);
+% variable retreat is positive for a retreating glacier  
 rs = - retreat(:,1:87);
 nor = rs(1,:);
 ner = rs(2,:);
@@ -49,15 +48,19 @@ dist = ncload(['../Models/' amodel '/dist_0d6_ISMIP6_GrIS_01km.nc']);
 wght = ncload(['../Models/' amodel '/weight_0d6_ISMIP6_GrIS_01km.nc']);
 wght = max(wght.ww,0);
 
-nx = size(ima.sftgif,1);
-ny = size(ima.sftgif,2);
+nx = size(ima.grmask,1);
+ny = size(ima.grmask,2);
 nt = size(rs,2);
-x = 1:nx;
-y = 1:ny;
-% timer
-%time = 2014:1:2016; 
 time = 2014:1:2100; 
-refr3 = single(zeros(nx,ny,length(time)));
+
+nxm = length(g1.x);
+nym = length(g1.y);
+
+[y,x] = meshgrid(double(dist.y),double(dist.x));
+[yB, xB] = meshgrid(g1.y, g1.x);
+
+% output on model grid
+refr3 = single(zeros(nxm,nym,nt));
 
 for k=1:nt
 %for k=1:1
@@ -120,6 +123,32 @@ end
 timestamp = caldays(time-1900+1,3);
 time_bounds = [caldays(time-1900+1,2), caldays(time-1900+2,2)];
 
-res = 1;
-ncwrite_GrIS_retreatmasks(filename, refr3, 'sftgif' , {'x','y','t'}, res, timestamp, time_bounds);
-%
+if (flg_plot)
+    % plot retreats
+    co = get(0,'DefaultAxesColorOrder');
+    figure
+    hold on; box on;
+    plot(time,nor,'Color',co(1,:))
+    plot(time,ner,'Color',co(2,:))
+    plot(time,cer,'Color',co(3,:))
+    plot(time,ser,'Color',co(4,:))
+    plot(time,swr,'Color',co(5,:))
+    plot(time,cwr,'Color',co(6,:))
+    plot(time,nwr,'Color',co(7,:))
+    legend({'NO','NE','CE','SE','SW','CW','NW'},'Location','nw')
+end
+
+if exist(filename)
+     delete(filename)
+end
+nccreate(filename,'sftgif', 'Dimensions', {'x', nxm, 'y', nym, 'time', inf},'Datatype','single');
+nccreate(filename,'time', 'Dimensions', {'time', inf});
+ncwrite(filename, 'sftgif', refr3);
+ncwrite(filename, 'time', time*31556926.);
+ncwriteatt(filename,'time','units','seconds since 1995-1-1');
+
+%% time axis
+timestamp = caldays(time-1900+1,3);
+time_bounds = [caldays(time-1900+1,2), caldays(time-1900+2,2)];
+
+ncwrite_GrIS_retreatmasks(filename, refr3, 'sftgif' ,g1.x,g1.y,timestamp, time_bounds);

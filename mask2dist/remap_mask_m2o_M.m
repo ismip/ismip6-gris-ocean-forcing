@@ -17,8 +17,8 @@ grmask = interp2(yd,xd,mask,yg,xg,'nearest',0);
 ncwrite2d_n('grmask_M_0d6km.nc', grmask,'grmask')
 
 if (flg_plot)
-  shade(d1.sftgif)
-  print -dpng -r300 mask_M_org
-  shade(grmask)
-  print -dpng -r300 mask_M_0d6km
+    shade(d1.sftgif)
+    print -dpng -r300 mask_M_org
+    shade(grmask)
+    print -dpng -r300 mask_M_0d6km
 end

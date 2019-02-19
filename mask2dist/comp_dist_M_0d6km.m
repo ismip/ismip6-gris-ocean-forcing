@@ -36,23 +36,23 @@ ncwrite2d_n('dist0d6km_M.nc',double(dist),'dist')
 % append coordinates to model dist file
 ! ncks -A -v x,y ../Data/BedMachine/BM_0d6km_xy.nc dist0d6km_M.nc
 
-if (flg_plot);
-  % plotting
-  shade(dist)
-  axis equal
-  %colororder = distinguishable_colors(150);
-  %set(0,'DefaultAxesColorOrder', colororder)
-  % colormap lines(50)
-  load('cmap_banded.mat');
-  colormap(cmap)
-  hold on
-  contour(wmask',[0.5,0.5],'k')
-  set(gcf,'Position', [142 74 609 1031]);
-  
-  caxis([0,100])
-  print -dpng -r300 bwdist_M_0d6km_100km
-  
-  %caxis([0,900])
-  %print -dpng -r300 bwdist_M_0d6km_900km
-end  
-  
+if (flg_plot)
+    % plotting
+    shade(dist)
+    axis equal
+    %colororder = distinguishable_colors(150);
+    %set(0,'DefaultAxesColorOrder', colororder)
+    % colormap lines(50)
+    load('cmap_banded.mat');
+    colormap(cmap)
+    hold on
+    contour(wmask',[0.5,0.5],'k')
+    set(gcf,'Position', [142 74 609 1031]);
+
+    caxis([0,100])
+    print -dpng -r300 bwdist_M_0d6km_100km
+
+    %caxis([0,900])
+    %print -dpng -r300 bwdist_M_0d6km_900km
+end
+

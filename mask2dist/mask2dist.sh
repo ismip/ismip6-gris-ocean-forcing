@@ -2,8 +2,8 @@
 # Build retreat distance map based on modelled ice mask
 
 # Model name with directory in 'Models' that contains sftgif.nc
-amodel=OBS
-#amodel=IMAUICE16
+#amodel=OBS
+amodel=IMAUICE16
 
 cp ../Models/${amodel}/sftgif.nc ./sftgif.nc
 
