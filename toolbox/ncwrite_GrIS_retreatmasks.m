@@ -38,13 +38,14 @@ ncwriteatt(ancfile,'time', 'units', 'days since 1900-1-1 00:00:00') ;
 ncwriteatt(ancfile,'time', 'standard_name', 'time') ;
 ncwriteatt(ancfile,'time', 'calendar', 'gregorian') ;
 ncwriteatt(ancfile,'time', 'bounds', 'time_bounds') ;
-ncwriteatt(ancfile,'time', 'axis', 'time') ;
+ncwriteatt(ancfile,'time', 'axis', 'T') ;
 
+ncwriteatt(ancfile,'/','Conventions','CF-1.7')
 ncwriteatt(ancfile,'/','proj4','+init=epsg:3413')
 ncwriteatt(ancfile,'/','Description',['Retreat masks for outlet glacier forcing. Prepared for ISMIP6 by Heiko Goelzer (h.goelzer@uu.nl), IMAU, ', date ])
 % Add attributes to variables
-ncwriteatt(ancfile,varname, 'units', 'unitless') ;
-ncwriteatt(ancfile,varname, 'long_name', 'ice mask for retreat parameterisation') ;
+ncwriteatt(ancfile,varname, 'units', '1') ;
+ncwriteatt(ancfile,varname, 'long_name', 'ice fraction mask for retreat parameterisation') ;
 ncwriteatt(ancfile,varname, 'grid_mapping', 'mapping') ;
 %ncwriteatt(ancfile,varname, '_FillValue', -9999.) ; 
 
