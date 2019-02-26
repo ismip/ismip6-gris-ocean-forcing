@@ -3,7 +3,8 @@
 
 # Model name with directory in 'Models' that contains sftgif.nc
 #amodel=OBS
-amodel=IMAUICE16
+#amodel=IMAUICE16
+amodel=CISM
 
 cp ../Models/${amodel}/sftgif.nc ./sftgif.nc
 

@@ -4,9 +4,21 @@
 clear
 
 %amodel='OBS'
+%amodel='IMAUICE16'
+amodel='CISM'
 
-amodel='IMAUICE16'
 ascenario='MIROC5-rcp85-Rmed'
+%ascenario='MIROC5-rcp85-Rhigh'
+%ascenario='MIROC5-rcp85-Rlow'
+
+%ascenario='MIROC5-rcp26-Rmed'
+%ascenario='MIROC5-rcp26-Rhigh'
+%ascenario='MIROC5-rcp26-Rlow'
+
+%ascenario='NorESM-rcp85-Rmed'
+%ascenario='NorESM-rcp85-Rhigh'
+%ascenario='NorESM-rcp85-Rlow'
+
 aver = 'v1'
 
 % flag for plotting 
