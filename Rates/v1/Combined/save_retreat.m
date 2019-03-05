@@ -40,11 +40,11 @@ save(['../MIROC5-rcp26-Rlow/retreat.mat'],'retreat');
 
 % rcp85
 retreat =  in.retreat.NorESM.RCP85.med(reorder,65:151);
-save(['../NorESM-rcp85-Rmed/retreat.mat'],'retreat');
+save(['../NorESM1-rcp85-Rmed/retreat.mat'],'retreat');
 
 retreat =  in.retreat.NorESM.RCP85.high(reorder,65:151);
-save(['../NorESM-rcp85-Rhigh/retreat.mat'],'retreat');
+save(['../NorESM1-rcp85-Rhigh/retreat.mat'],'retreat');
 
 retreat =  in.retreat.NorESM.RCP85.low(reorder,65:151);
-save(['../NorESM-rcp85-Rlow/retreat.mat'],'retreat');
+save(['../NorESM1-rcp85-Rlow/retreat.mat'],'retreat');
 
