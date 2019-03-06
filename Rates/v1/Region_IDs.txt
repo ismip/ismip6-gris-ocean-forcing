@@ -1,0 +1,1 @@
+'NO'    'NE'    'CE'    'SE'    'SW'    'CW'    'NW'
