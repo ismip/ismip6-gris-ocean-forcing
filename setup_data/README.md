@@ -7,6 +7,8 @@
 
 ```cp <ExtArchive>/sftgif_BedMachineGreenland_01000m.nc ../Data/BedMachine/```
 
+```cp <ExtArchive>/sftgrf_BedMachineGreenland_01000m.nc ../Data/BedMachine/```
+
 ### Prepare Bedmachine data
 Note: Bedmachine data has to be processed with inverted y axis compared to original
 

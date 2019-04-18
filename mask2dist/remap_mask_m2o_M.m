@@ -11,14 +11,14 @@ g1 = ncload('../Data/dist/dist0d6km.nc');
 [yg,xg] = meshgrid(double(g1.y),double(g1.x));
 
 mask = double(d1.sftgif > 0);
-grmask = interp2(yd,xd,mask,yg,xg,'nearest',0);
+sftgif = interp2(yd,xd,mask,yg,xg,'nearest',0);
 
 % save
-ncwrite2d_n('grmask_M_0d6km.nc', grmask,'grmask')
+ncwrite2d_n('sftgif_M_0d6km.nc', sftgif,'sftgif')
 
 if (flg_plot)
     shade(d1.sftgif)
     print -dpng -r300 mask_M_org
-    shade(grmask)
+    shade(sftgif)
     print -dpng -r300 mask_M_0d6km
 end

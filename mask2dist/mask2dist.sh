@@ -3,8 +3,19 @@
 
 # Model name with directory in 'Models' that contains sftgif.nc
 #amodel=OBS
+#amodel=OBSSH
 #amodel=IMAUICE16
-amodel=CISM
+#amodel=IMAUICE16V2
+#amodel=CISM
+#amodel=ELMER
+amodel=ISSMUCIJPL
+#amodel=IMAUICE16V5
+#amodel=IMAUICE16V2HIST
+#amodel=IMAUICE16V3
+#amodel=IMAUICE16v8histmed
+#amodel=IMAUICE16v09histmed
+#amodel=IMAUICE16v08histmed
+
 
 cp ../Models/${amodel}/sftgif.nc ./sftgif.nc
 
@@ -13,13 +24,13 @@ cp ../Models/${amodel}/sftgif.nc ./sftgif.nc
 ../toolbox/matlabbatch meta_mat.m
 
 # take partial mask into account
-ncap2 -A -s "rweight=(double(grmask)); where(grmask>0) rweight=(double(grmask)); elsewhere rweight=0;" -v grmask_M_0d6km.nc weight_0d6_ISMIP6_GrIS.nc
+ncap2 -A -s "rweight=(double(sftgif)); where(sftgif>0) rweight=(double(sftgif)); elsewhere rweight=0;" -v sftgif_M_0d6km.nc weight_0d6_ISMIP6_GrIS.nc
 ncap2 -O -s "ww=rweight" weight_0d6_ISMIP6_GrIS.nc weight_0d6_ISMIP6_GrIS.nc
 
 # move results to model directory
 /bin/mv dist0d6km_M.nc ../Models/${amodel}/
 /bin/mv weight_0d6_ISMIP6_GrIS.nc ../Models/${amodel}/
-/bin/mv grmask_M_0d6km.nc ../Models/${amodel}/sftgif_0d6.nc
+/bin/mv sftgif_M_0d6km.nc ../Models/${amodel}/sftgif_0d6.nc
 /bin/mv *.png ../Models/${amodel}/
 
 # clean up

@@ -3,23 +3,46 @@
  
 clear
 
-amodel='OBS'
+%amodel='OBS'
+%amodel='OBSSH'
 %amodel='IMAUICE16'
+%amodel='IMAUICE16V2'
 %amodel='CISM'
+%amodel='ELMER'
+%amodel='ISSMUCIJPL'
+%amodel='IMAUICE16V5'
+%amodel='IMAUICE16V2HIST'
+%amodel='IMAUICE16V3'
+%amodel='IMAUICE16v8histmed'
+amodel='IMAUICE16v09histmed'
+%amodel='IMAUICE16v08histmed'
+
+% scenario setup 2014-2100, including init year 2014
+%aver = 'v1'
+%ts = 87;
 
 %ascenario='MIROC5-rcp85-Rmed'
 %ascenario='MIROC5-rcp85-Rhigh'
 %ascenario='MIROC5-rcp85-Rlow'
 
 %ascenario='MIROC5-rcp26-Rmed'
-%ascenario='MIROC5-rcp26-Rhigh'
-%ascenario='MIROC5-rcp26-Rlow'
+%%ascenario='MIROC5-rcp26-Rhigh'
+%%ascenario='MIROC5-rcp26-Rlow'
 
-ascenario='NorESM1-rcp85-Rmed'
+%ascenario='NorESM1-rcp85-Rmed'
 %ascenario='NorESM1-rcp85-Rhigh'
 %ascenario='NorESM1-rcp85-Rlow'
 
-aver = 'v1'
+%ascenario='ZERO'
+
+% hist setup 1959-2014, including init year 1959
+aver = 'hist_med_v1'
+ts = 56;
+ascenario='hist-Rmed'
+%ascenario='hist-Rhigh'
+%ascenario='hist-Rlow'
+%ascenario='hist-Rzero'
+
 
 % flag for plotting 
 flg_plot=0;
@@ -45,7 +68,7 @@ NW = bas.IDs == 7;
 % load regional retreats
 load(['../Rates/' aver '/' ascenario '/retreat.mat']);
 % variable retreat is positive for a retreating glacier  
-rs = - retreat(:,1:87);
+rs = - hist_retreat(:,1:ts);
 nor = rs(1,:);
 ner = rs(2,:);
 cer = rs(3,:);
@@ -61,16 +84,21 @@ dist = ncload(['../Models/' amodel '/dist0d6km_M.nc']);
 wght = ncload(['../Models/' amodel '/weight_0d6_ISMIP6_GrIS.nc']);
 wght = max(wght.ww,0);
 
-nx = size(ima.grmask,1);
-ny = size(ima.grmask,2);
+nx = size(ima.sftgif,1);
+ny = size(ima.sftgif,2);
 nt = size(rs,2);
-time = 2014:1:2100; 
+
+% scenarios
+%time = 2014:1:2100; 
+
+% historical
+time = 1959:1:2014; 
 
 nxm = length(g1.x);
 nym = length(g1.y);
 
 [y,x] = meshgrid(double(dist.y),double(dist.x));
-[yB, xB] = meshgrid(g1.y, g1.x);
+[yB, xB] = meshgrid(double(g1.y), double(g1.x));
 
 % output on model grid
 refr3 = single(zeros(nxm,nym,nt));
@@ -82,39 +110,39 @@ for k=1:nt
 
 % retreat after n years
     retr = (dist.dist < nor(k));
-    refr = max(double(ima.grmask) - retr.*wght,0);
+    refr = max(double(ima.sftgif) - retr.*wght,0);
     refr2(:,:) = refr2(:,:) + refr.*NO;
 %    shade(refr2(:,:,k))
 
     retr = (dist.dist < ner(k));
-    refr = max(double(ima.grmask) - retr.*wght ,0);
+    refr = max(double(ima.sftgif) - retr.*wght ,0);
     refr2(:,:) = refr2(:,:) + refr.*NE;
 
     retr = (dist.dist < cer(k));
-    refr = max(double(ima.grmask) - retr.*wght ,0);
+    refr = max(double(ima.sftgif) - retr.*wght ,0);
     refr2(:,:) = refr2(:,:) + refr.*CE;
 
     retr = (dist.dist < ser(k));
-    refr = max(double(ima.grmask) - retr.*wght ,0);
+    refr = max(double(ima.sftgif) - retr.*wght ,0);
     refr2(:,:) = refr2(:,:) + refr.*SE;
 
     retr = (dist.dist < swr(k));
-    refr = max(double(ima.grmask) - retr.*wght ,0);
+    refr = max(double(ima.sftgif) - retr.*wght ,0);
     refr2(:,:) = refr2(:,:) + refr.*SW;
 
     retr = (dist.dist < cwr(k));
-    refr = max(double(ima.grmask) - retr.*wght ,0);
+    refr = max(double(ima.sftgif) - retr.*wght ,0);
     refr2(:,:) = refr2(:,:) + refr.*CW;
 
     retr = (dist.dist < nwr(k));
-    refr = max(double(ima.grmask) - retr.*wght ,0);
+    refr = max(double(ima.sftgif) - retr.*wght ,0);
     refr2(:,:) = refr2(:,:) + refr.*NW;
 
 %    shade(refr2(:,:))
 
     
 % Matlab interpolation and weight creation 0d6 -> model grid
-mask = refr2>0.;
+mask = double(refr2>0.);
 
 % remap mask with binning
 wmask = binToMatrix(y,x,mask,yB,xB);

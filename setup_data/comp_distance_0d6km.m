@@ -22,7 +22,6 @@ mask = int8(mskout>0).*int8((int8(b.wmask)+int8(b.wgrimask))>0);
 
 % seed locations: ocean points
 dist = bwdistgeodesic(mask>0,b.wmask>0,'quasi-euclidean')*sc;
-%connected = marginid(b.wbmask);
 
 % mask out NaN
 dist(isnan(dist)) = 9999;

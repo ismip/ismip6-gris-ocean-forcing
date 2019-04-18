@@ -4,27 +4,36 @@ clear
 % flag for plotting 
 flg_plot=0;
 
-b=ncload('../Data/BedMachine/BedMachineGreenlandMasks0d6km.nc');
-m=ncload('grmask_M_0d6km.nc');
+b = ncload('../Data/BedMachine/BedMachineGreenlandMasks0d6km.nc');
+m = ncload('sftgif_M_0d6km.nc');
+
 % scale in km
 sc = 0.6;
 
+addpath('../toolbox')
+
 % Combine modelled mask with observational ocean
 
-% locations that can be traversed: ice below sea-level
-mask = (m.grmask).*(b.wbmask);
+% type conversion
+icemask = int8(m.sftgif);
+wetbedmask = int8(b.wbmask);
 
-% new ocean mask
-wmask = int8(b.wbmask + mask == 1);
+% locations that can be traversed: modelled ice with observed bed below sea-level
+mask = icemask.*wetbedmask;
+
+% seed locations on connected ocean mask
+wmask = (1-icemask).*wetbedmask;
+wmask = int8(marginid(wmask));
 
 % grow out 1 point into ocean to get overlap
-mskout = int8(mask);
+mskout = mask;
 mskout(2:end-1,2:end-1) = mskout(2:end-1,2:end-1) + mskout(3:end,2:end-1) + mskout(1:end-2,2:end-1) + mskout(2:end-1,3:end) + mskout(2:end-1,1:end-2);
 % remask to ice+ocean
-mask = int8(mskout>0).*int8((int8(wmask)+int8(mask))>0);
+rmask = int8(mskout>0).*int8((wmask+mask)>0);
 
-% seed locations: ocean points
-dist = bwdistgeodesic(mask>0,wmask>0,'quasi-euclidean')*sc;
+% seed locations: ocean points (wmask>0)
+% travel locations: ice with bed below sea-level (rmask>0)
+dist = bwdistgeodesic(rmask>0,wmask>0,'quasi-euclidean')*sc;
 
 % mask out NaN
 dist(isnan(dist)) = 9999;
