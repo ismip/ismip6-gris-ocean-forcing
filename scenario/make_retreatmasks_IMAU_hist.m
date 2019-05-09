@@ -3,9 +3,29 @@
  
 clear
 
-amodel='OBS'
-ascenario='MIROC5-rcp85-Rmed'
-aver = 'v1'
+%amodel='OBS'
+%amodel='OBSSH'
+%amodel='IMAUICE16'
+%amodel='IMAUICE16V2'
+%amodel='IMAUICE16V5'
+%amodel='IMAUICE16V2HIST'
+%amodel='IMAUICE16V3'
+%amodel='IMAUICE16v8histmed'
+%amodel='IMAUICE16v09histmed'
+%amodel='IMAUICE16v08histmed'
+%amodel='IMAUICE16v07histmed'
+amodel='IMAUICE16v06histmed'
+
+% hist setup 1959-2014, including init year 1959
+% aver is not important here, hist-Rmed, hist-Rhigh, ... are
+% identical in the 3 different aver versions
+aver = 'hist_med_v1'
+ts = 56;
+ascenario='hist-Rmed'
+ascenario='hist-Rhigh'
+ascenario='hist-Rlow'
+ascenario='hist-Rzero'
+
 
 % flag for plotting 
 flg_plot=0;
@@ -31,7 +51,7 @@ NW = bas.IDs == 7;
 % load regional retreats
 load(['../Rates/' aver '/' ascenario '/retreat.mat']);
 % variable retreat is positive for a retreating glacier  
-rs = - retreat(:,1:87);
+rs = - hist_retreat(:,1:ts);
 nor = rs(1,:);
 ner = rs(2,:);
 cer = rs(3,:);
@@ -50,7 +70,12 @@ wght = max(wght.ww,0);
 nx = size(ima.sftgif,1);
 ny = size(ima.sftgif,2);
 nt = size(rs,2);
-time = 2014:1:2100; 
+
+% scenarios
+%time = 2014:1:2100; 
+
+% historical
+time = 1959:1:2014; 
 
 nxm = length(g1.x);
 nym = length(g1.y);

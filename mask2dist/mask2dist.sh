@@ -8,13 +8,26 @@
 #amodel=IMAUICE16V2
 #amodel=CISM
 #amodel=ELMER
-amodel=ISSMUCIJPL
+#amodel=ISSMUCIJPL
+#amodel=AWI_ISSM
+#amodel=AWI_ISSM_grid1
+#amodel=AWI_ISSM_grid2
+#amodel=AWI_ISSM_grid3
+#amodel=AWI_ISSM_grid4
+#amodel=SICOPOLIS1
+#amodel=ISSM_GSFC
+#amodel=ISSM_JPL
+amodel=ISSM_JPLPALEO
+
+# IMAU specific runs
 #amodel=IMAUICE16V5
 #amodel=IMAUICE16V2HIST
 #amodel=IMAUICE16V3
 #amodel=IMAUICE16v8histmed
 #amodel=IMAUICE16v09histmed
 #amodel=IMAUICE16v08histmed
+#amodel=IMAUICE16v07histmed
+#amodel=IMAUICE16v06histmed
 
 
 cp ../Models/${amodel}/sftgif.nc ./sftgif.nc

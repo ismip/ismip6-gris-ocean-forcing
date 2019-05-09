@@ -1,11 +1,64 @@
 % Combine distance map and retreat scenario to get a time dependent ice fraction mask
 % Interpolate to model grid by binning
  
-clear
+%clear
 
-amodel='OBS'
-ascenario='MIROC5-rcp85-Rmed'
-aver = 'v1'
+%amodel='OBS'
+%amodel='OBSSH'
+%amodel='IMAUICE16'
+%amodel='IMAUICE16V2'
+%amodel='CISM'
+%amodel='IMAUICE16V5'
+%amodel='IMAUICE16V2HIST'
+%amodel='IMAUICE16V3'
+%aver = 'v1'
+
+
+% continuous from hist
+%amodel='IMAUICE16V2HISTHIGH'
+%aver = 'hist_high_v1'
+
+%amodel='IMAUICE16V2HISTMED'
+%amodel='IMAUICE16v8histmed'
+%amodel='IMAUICE16v09histmed'
+%amodel='IMAUICE16v08histmed'
+%aver = 'hist_med_v1'
+
+%amodel='IMAUICE16V2HISTLOW'
+%aver = 'hist_low_v1'
+%ascenario='MIROC5-rcp85-Rmed'
+%ascenario='MIROC5-rcp85-Rhigh'
+%ascenario='MIROC5-rcp85-Rlow'
+
+%ascenario='MIROC5-rcp26-Rmed'
+%%ascenario='MIROC5-rcp26-Rhigh'
+%%ascenario='MIROC5-rcp26-Rlow'
+
+%ascenario='NorESM1-rcp85-Rmed'
+%ascenario='NorESM1-rcp85-Rhigh'
+%ascenario='NorESM1-rcp85-Rlow'
+
+%ascenario='HadGEM2-ES-rcp85-Rmed'
+%ascenario='HadGEM2-ES-rcp85-Rhigh'
+%ascenario='HadGEM2-ES-rcp85-Rlow'
+
+%ascenario='CSIRO-Mk3.6-rcp85-Rmed'
+%ascenario='CSIRO-Mk3.6-rcp85-Rhigh'
+%ascenario='CSIRO-Mk3.6-rcp85-Rlow'
+
+%ascenario='IPSL-CM5-MR-rcp85-Rmed'
+%ascenario='IPSL-CM5-MR-rcp85-Rhigh'
+%ascenario='IPSL-CM5-MR-rcp85-Rlow'
+
+%ascenario='ACCESS1.3-rcp85-Rmed'
+%ascenario='ACCESS1.3-rcp85-Rhigh'
+%ascenario='ACCESS1.3-rcp85-Rlow'
+
+%ascenario='ZERO'
+
+
+% scenario setup 2014-2100, including init year 2014
+ts = 87;
 
 % flag for plotting 
 flg_plot=0;
@@ -31,7 +84,7 @@ NW = bas.IDs == 7;
 % load regional retreats
 load(['../Rates/' aver '/' ascenario '/retreat.mat']);
 % variable retreat is positive for a retreating glacier  
-rs = - retreat(:,1:87);
+rs = - retreat(:,1:ts);
 nor = rs(1,:);
 ner = rs(2,:);
 cer = rs(3,:);
@@ -50,7 +103,12 @@ wght = max(wght.ww,0);
 nx = size(ima.sftgif,1);
 ny = size(ima.sftgif,2);
 nt = size(rs,2);
+
+% scenarios
 time = 2014:1:2100; 
+
+% historical
+%time = 1959:1:2014; 
 
 nxm = length(g1.x);
 nym = length(g1.y);
