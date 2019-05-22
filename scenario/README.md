@@ -7,6 +7,10 @@
 # Standard setup for new ISMIP6 models
 ## for testing
 `meta_make_retreatmasks1.m` 
+## adding all core models/scenarios
+`meta_make_retreatmasks2.m`
+## adding all other models/scenarios
+`meta_make_retreatmasks3.m`
 ## for all models/scenarios
 `meta_make_retreatmasks.m`
 ## calls

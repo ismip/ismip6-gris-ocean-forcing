@@ -188,7 +188,7 @@ end
 if exist(filename)
      delete(filename)
 end
-nccreate(filename,'sftgif', 'Dimensions', {'x', nxm, 'y', nym, 'time', inf},'Datatype','single');
+nccreate(filename,'sftgif', 'Dimensions', {'x', nxm, 'y', nym, 'time', inf},'Datatype','single','DeflateLevel',1);
 nccreate(filename,'time', 'Dimensions', {'time', inf});
 ncwrite(filename, 'sftgif', refr3);
 ncwrite(filename, 'time', time*31556926.);

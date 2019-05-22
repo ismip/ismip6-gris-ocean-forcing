@@ -10,7 +10,9 @@
 % flag for plotting 
 flg_plot=0;
 
-addpath('../toolbox')
+if (~isdeployed)
+  addpath('../toolbox')
+end
 
 % read days for time axis 
 caldays = load('../Data/Grid/days_1900-2300.txt');
@@ -129,7 +131,7 @@ end
 if exist(filename)
      delete(filename)
 end
-nccreate(filename,'sftgif', 'Dimensions', {'x', nxm, 'y', nym, 'time', inf},'Datatype','single');
+nccreate(filename,'sftgif', 'Dimensions', {'x', nxm, 'y', nym, 'time', inf},'Datatype','single','DeflateLevel',1);
 nccreate(filename,'time', 'Dimensions', {'time', inf});
 ncwrite(filename, 'sftgif', refr3);
 ncwrite(filename, 'time', time*31556926.);
@@ -140,3 +142,7 @@ timestamp = caldays(time-1900+1,3);
 time_bounds = [caldays(time-1900+1,2), caldays(time-1900+2,2)];
 
 ncwrite_GrIS_retreatmasks(filename, refr3, 'sftgif' ,g1.x,g1.y,timestamp, time_bounds);
+
+% clean up
+clear refr3 mask refr refr2 retr wght wmask x y xB yB
+clear CE CW NE NO NW SE SW 

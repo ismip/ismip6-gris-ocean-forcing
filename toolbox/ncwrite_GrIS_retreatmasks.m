@@ -15,7 +15,7 @@ nt = size(avar,3);
 
 % write out
 % Define
-nccreate(ancfile,varname, 'Dimensions', {'x', nx, 'y', ny, 'time', inf},'Datatype','single');
+nccreate(ancfile,varname, 'Dimensions', {'x', nx, 'y', ny, 'time', inf},'Datatype','single','DeflateLevel',1);
 nccreate(ancfile,'x','Dimensions',{'x',nx}, 'Datatype','single');
 nccreate(ancfile,'y','Dimensions',{'y',ny}, 'Datatype','single');
 nccreate(ancfile,'time', 'Dimensions', {'time', inf});
