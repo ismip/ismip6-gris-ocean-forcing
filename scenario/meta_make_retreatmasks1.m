@@ -16,7 +16,8 @@
 %amodel='ISSM_JPLPALEO'
 %amodel='ISSM_JPL'
 %amodel='SICOPOLIS1'
-amodel='ISSM_GSFC'
+%amodel='ISSM_GSFC'
+amodel='MUN_GSM2371'
 
 aver = 'v1'
 

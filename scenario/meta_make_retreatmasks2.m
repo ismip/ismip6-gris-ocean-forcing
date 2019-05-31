@@ -33,15 +33,6 @@ make_retreatmasks_func
 ascenario=[agcm '-' ascen '-Rlow']
 make_retreatmasks_func
 
-agcm = 'MIROC5'
-ascen = 'rcp26'
-ascenario=[agcm '-' ascen '-Rmed']
-make_retreatmasks_func 
-%ascenario=[agcm '-' ascen '-Rhigh']
-%make_retreatmasks_func
-%ascenario=[agcm '-' ascen '-Rlow']
-%make_retreatmasks_func
-
 agcm = 'NorESM1'
 ascen = 'rcp85'
 ascenario=[agcm '-' ascen '-Rmed']
@@ -51,6 +42,15 @@ make_retreatmasks_func
 %ascenario=[agcm '-' ascen '-Rlow']
 %make_retreatmasks_func
            
+agcm = 'MIROC5'
+ascen = 'rcp26'
+ascenario=[agcm '-' ascen '-Rmed']
+make_retreatmasks_func 
+%ascenario=[agcm '-' ascen '-Rhigh']
+%make_retreatmasks_func
+%ascenario=[agcm '-' ascen '-Rlow']
+%make_retreatmasks_func
+
 agcm = 'HadGEM2-ES'
 ascen = 'rcp85'
 ascenario=[agcm '-' ascen '-Rmed']

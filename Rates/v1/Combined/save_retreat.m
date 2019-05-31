@@ -7,7 +7,9 @@
 
 % load
 %in = load('projected_retreat.mat');
-in = load('April10/projected_retreat.mat');
+%in = load('April10/projected_retreat.mat');
+%in = load('May15/projected_retreat.mat');
+in = load('May16/projected_retreat.mat');
 
 % sort by regions
 reorder = [7,5,3,1,2,4,6];
@@ -52,52 +54,96 @@ time = time(65:151);
 %save(['../NorESM1-rcp85-Rlow/retreat.mat'],'retreat','IDs','time');
 %
 
-%%%%%%%% HadGEM2-ES
+%%%%%%%%% HadGEM2-ES
+%
+%% rcp85
+%retreat =  in.retreat.HadGEM.RCP85.med(reorder,65:151);
+%! mkdir ../HadGEM2-ES-rcp85-Rmed
+%save(['../HadGEM2-ES-rcp85-Rmed/retreat.mat'],'retreat','IDs','time');
+%
+%retreat =  in.retreat.HadGEM.RCP85.high(reorder,65:151);
+%! mkdir ../HadGEM2-ES-rcp85-Rhigh
+%save(['../HadGEM2-ES-rcp85-Rhigh/retreat.mat'],'retreat','IDs','time');
+%
+%retreat =  in.retreat.HadGEM.RCP85.low(reorder,65:151);
+%! mkdir ../HadGEM2-ES-rcp85-Rlow
+%save(['../HadGEM2-ES-rcp85-Rlow/retreat.mat'],'retreat','IDs','time');
+%
+%
+%%%%%%%%% CSIRO-Mk3.6
+%
+%% rcp85
+%retreat =  in.retreat.CSIRO.RCP85.med(reorder,65:151);
+%! mkdir ../CSIRO-Mk3.6-rcp85-Rmed
+%save(['../CSIRO-Mk3.6-rcp85-Rmed/retreat.mat'],'retreat','IDs','time');
+%
+%retreat =  in.retreat.CSIRO.RCP85.high(reorder,65:151);
+%! mkdir ../CSIRO-Mk3.6-rcp85-Rhigh
+%save(['../CSIRO-Mk3.6-rcp85-Rhigh/retreat.mat'],'retreat','IDs','time');
+%
+%retreat =  in.retreat.CSIRO.RCP85.low(reorder,65:151);
+%! mkdir ../CSIRO-Mk3.6-rcp85-Rlow
+%save(['../CSIRO-Mk3.6-rcp85-Rlow/retreat.mat'],'retreat','IDs','time');
+%
+%
+%%%%%%%%% IPSL-CM5-MR
+%
+%% rcp85
+%retreat =  in.retreat.IPSLCM.RCP85.med(reorder,65:151);
+%! mkdir ../IPSL-CM5-MR-rcp85-Rmed
+%save(['../IPSL-CM5-MR-rcp85-Rmed/retreat.mat'],'retreat','IDs','time');
+%
+%retreat =  in.retreat.IPSLCM.RCP85.high(reorder,65:151);
+%! mkdir ../IPSL-CM5-MR-rcp85-Rhigh
+%save(['../IPSL-CM5-MR-rcp85-Rhigh/retreat.mat'],'retreat','IDs','time');
+%
+%retreat =  in.retreat.IPSLCM.RCP85.low(reorder,65:151);
+%! mkdir ../IPSL-CM5-MR-rcp85-Rlow
+%save(['../IPSL-CM5-MR-rcp85-Rlow/retreat.mat'],'retreat','IDs','time');
+
+%%%%%%%% ACCESS1-3
 
 % rcp85
-retreat =  in.retreat.HadGEM.RCP85.med(reorder,65:151);
-! mkdir ../HadGEM2-ES-rcp85-Rmed
-save(['../HadGEM2-ES-rcp85-Rmed/retreat.mat'],'retreat','IDs','time');
+retreat =  in.retreat.ACCESS.RCP85.med(reorder,65:151);
+! mkdir ../ACCESS1.3-rcp85-Rmed
+save(['../ACCESS1.3-rcp85-Rmed/retreat.mat'],'retreat','IDs','time');
 
-retreat =  in.retreat.HadGEM.RCP85.high(reorder,65:151);
-! mkdir ../HadGEM2-ES-rcp85-Rhigh
-save(['../HadGEM2-ES-rcp85-Rhigh/retreat.mat'],'retreat','IDs','time');
+retreat =  in.retreat.ACCESS.RCP85.high(reorder,65:151);
+! mkdir ../ACCESS1.3-rcp85-Rhigh
+save(['../ACCESS1.3-rcp85-Rhigh/retreat.mat'],'retreat','IDs','time');
 
-retreat =  in.retreat.HadGEM.RCP85.low(reorder,65:151);
-! mkdir ../HadGEM2-ES-rcp85-Rlow
-save(['../HadGEM2-ES-rcp85-Rlow/retreat.mat'],'retreat','IDs','time');
-
-
-%%%%%%%% CSIRO-Mk3.6
-
-% rcp85
-retreat =  in.retreat.CSIRO.RCP85.med(reorder,65:151);
-! mkdir ../CSIRO-Mk3.6-rcp85-Rmed
-save(['../CSIRO-Mk3.6-rcp85-Rmed/retreat.mat'],'retreat','IDs','time');
-
-retreat =  in.retreat.CSIRO.RCP85.high(reorder,65:151);
-! mkdir ../CSIRO-Mk3.6-rcp85-Rhigh
-save(['../CSIRO-Mk3.6-rcp85-Rhigh/retreat.mat'],'retreat','IDs','time');
-
-retreat =  in.retreat.CSIRO.RCP85.low(reorder,65:151);
-! mkdir ../CSIRO-Mk3.6-rcp85-Rlow
-save(['../CSIRO-Mk3.6-rcp85-Rlow/retreat.mat'],'retreat','IDs','time');
+retreat =  in.retreat.ACCESS.RCP85.low(reorder,65:151);
+! mkdir ../ACCESS1.3-rcp85-Rlow
+save(['../ACCESS1.3-rcp85-Rlow/retreat.mat'],'retreat','IDs','time');
 
 
-%%%%%%%% IPSL-CM5-MR
+%%%%%%%% CNRM-CM6
 
-% rcp85
-retreat =  in.retreat.IPSLCM.RCP85.med(reorder,65:151);
-! mkdir ../IPSL-CM5-MR-rcp85-Rmed
-save(['../IPSL-CM5-MR-rcp85-Rmed/retreat.mat'],'retreat','IDs','time');
+% ssp585
+retreat =  in.retreat.CNRMCM6.ssp585.med(reorder,65:151);
+! mkdir ../CNRM-CM6-ssp585-Rmed
+save(['../CNRM-CM6-ssp585-Rmed/retreat.mat'],'retreat','IDs','time');
 
-retreat =  in.retreat.IPSLCM.RCP85.high(reorder,65:151);
-! mkdir ../IPSL-CM5-MR-rcp85-Rhigh
-save(['../IPSL-CM5-MR-rcp85-Rhigh/retreat.mat'],'retreat','IDs','time');
+retreat =  in.retreat.CNRMCM6.ssp585.high(reorder,65:151);
+! mkdir ../CNRM-CM6-ssp585-Rhigh
+save(['../CNRM-CM6-ssp585-Rhigh/retreat.mat'],'retreat','IDs','time');
 
-retreat =  in.retreat.IPSLCM.RCP85.low(reorder,65:151);
-! mkdir ../IPSL-CM5-MR-rcp85-Rlow
-save(['../IPSL-CM5-MR-rcp85-Rlow/retreat.mat'],'retreat','IDs','time');
+retreat =  in.retreat.CNRMCM6.ssp585.low(reorder,65:151);
+! mkdir ../CNRM-CM6-ssp585-Rlow
+save(['../CNRM-CM6-ssp585-Rlow/retreat.mat'],'retreat','IDs','time');
+
+% ssp126
+retreat =  in.retreat.CNRMCM6.ssp126.med(reorder,65:151);
+! mkdir ../CNRM-CM6-ssp126-Rmed
+save(['../CNRM-CM6-ssp126-Rmed/retreat.mat'],'retreat','IDs','time');
+
+retreat =  in.retreat.CNRMCM6.ssp126.high(reorder,65:151);
+! mkdir ../CNRM-CM6-ssp126-Rhigh
+save(['../CNRM-CM6-ssp126-Rhigh/retreat.mat'],'retreat','IDs','time');
+
+retreat =  in.retreat.CNRMCM6.ssp126.low(reorder,65:151);
+! mkdir ../CNRM-CM6-ssp126-Rlow
+save(['../CNRM-CM6-ssp126-Rlow/retreat.mat'],'retreat','IDs','time');
 
 
 %%%%%%%%% ZERO

@@ -1,6 +1,6 @@
 % Run for a number of scenarios
 
-amodel='OBS'
+%amodel='OBS'
 %amodel='OBSSH'
 %amodel='IMAUICE16'
 %amodel='IMAUICE16V2'
@@ -11,25 +11,19 @@ amodel='OBS'
 %amodel='ISSMUCIJPL'
 %amodel='ISSM_JPLPALEO'
 %amodel='ISSM_JPL'
+%amodel='SICOPOLIS1'
+%amodel='SICOPOLIS2'
+amodel='VUB_GISM_SIA'
 
 aver = 'v1'
 
 %%%%%%%%%%%% Scenarios
 
-ascenario='ZERO'
-make_retreatmasks_func 
+%ascenario='ZERO'
+%make_retreatmasks_func 
 
 agcm = 'MIROC5'
 ascen = 'rcp85'
-ascenario=[agcm '-' ascen '-Rmed']
-make_retreatmasks_func 
-ascenario=[agcm '-' ascen '-Rhigh']
-make_retreatmasks_func
-ascenario=[agcm '-' ascen '-Rlow']
-make_retreatmasks_func
-
-agcm = 'MIROC5'
-ascen = 'rcp26'
 ascenario=[agcm '-' ascen '-Rmed']
 make_retreatmasks_func 
 ascenario=[agcm '-' ascen '-Rhigh']
@@ -46,6 +40,15 @@ make_retreatmasks_func
 ascenario=[agcm '-' ascen '-Rlow']
 make_retreatmasks_func
            
+agcm = 'MIROC5'
+ascen = 'rcp26'
+ascenario=[agcm '-' ascen '-Rmed']
+make_retreatmasks_func 
+ascenario=[agcm '-' ascen '-Rhigh']
+make_retreatmasks_func
+ascenario=[agcm '-' ascen '-Rlow']
+make_retreatmasks_func
+
 agcm = 'HadGEM2-ES'
 ascen = 'rcp85'
 ascenario=[agcm '-' ascen '-Rmed']
