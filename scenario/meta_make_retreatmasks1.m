@@ -1,7 +1,7 @@
 % Test run for one scenarios
 
 
-%amodel='OBS'
+amodel='OBS'
 %amodel='OBSSH'
 %amodel='IMAUICE16'
 %amodel='IMAUICE16V2'
@@ -17,7 +17,8 @@
 %amodel='ISSM_JPL'
 %amodel='SICOPOLIS1'
 %amodel='ISSM_GSFC'
-amodel='MUN_GSM2371'
+%amodel='MUN_GSM2371'
+%amodel='UAF_PISM2'
 
 aver = 'v1'
 

@@ -1,7 +1,7 @@
-% Run for a number of scenarios
+% Run for a number of scenarios: core experiments minus test case MIROC5
 
 
-%amodel='OBS'
+amodel='OBS'
 %amodel='OBSSH'
 %amodel='IMAUICE16'
 %amodel='IMAUICE16V2'
@@ -13,8 +13,8 @@
 %amodel='ISSM_JPLPALEO'
 %amodel='ISSM_JPL'
 %amodel='SICOPOLIS1'
-amodel='ISSM_GSFC'
-
+%amodel='ISSM_GSFC'
+%amodel='UAF_PISM2'
 
 aver = 'v1'
 
