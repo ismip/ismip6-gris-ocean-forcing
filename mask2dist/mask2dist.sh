@@ -2,33 +2,37 @@
 # Build retreat distance map based on modelled ice mask
 
 # Model name with directory in 'Models' that contains sftgif.nc
-#amodel=OBS
+amodel=OBS
 #amodel=OBSSH
 #amodel=IMAUICE16
-#amodel=IMAUICE16V2
 #amodel=CISM
 #amodel=ELMER
 #amodel=ISSMUCIJPL
-#amodel=AWI_ISSM
-#amodel=AWI_ISSM_grid1
-#amodel=AWI_ISSM_grid2
-#amodel=AWI_ISSM_grid3
-#amodel=AWI_ISSM_grid4
 #amodel=SICOPOLIS1
+#amodel=SICOPOLIS2
+#amodel=SICOPOLIS3
 #amodel=ISSM_GSFC
 #amodel=ISSM_JPL
-amodel=ISSM_JPLPALEO
-
-# IMAU specific runs
-#amodel=IMAUICE16V5
-#amodel=IMAUICE16V2HIST
-#amodel=IMAUICE16V3
-#amodel=IMAUICE16v8histmed
-#amodel=IMAUICE16v09histmed
-#amodel=IMAUICE16v08histmed
-#amodel=IMAUICE16v07histmed
-#amodel=IMAUICE16v06histmed
-
+#amodel=ISSM_JPLPALEO
+#amodel=ISSM_AWI_gridY
+#amodel=ISSM_AWI_gridZ
+#amodel=ISSM_AWI_grid1
+#amodel=ISSM_AWI_grid2
+#amodel=ISSM_AWI_grid3
+#amodel=VUB_GISM_SIA
+#amodel=MUN_GSM2371
+#amodel=UAF_PISM1
+#amodel=GRISLI_LSCE
+#amodel=VUB_GISM_SIA2
+#amodel=VUB_GISM_HO2
+#amodel=UAF_PISM2
+#amodel=GRISLI_LSCE2
+#amodel=VUB_GISM_SIA3
+#amodel=NCAR_CISM2
+#amodel=VUB_GISM_SIA4
+#amodel=GRISLI_LSCE3
+#amodel=ISSM_AWI_grid4
+#amodel=VUB_GISM_HOMv2
 
 cp ../Models/${amodel}/sftgif.nc ./sftgif.nc
 
