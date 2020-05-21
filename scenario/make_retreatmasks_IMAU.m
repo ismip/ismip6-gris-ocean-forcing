@@ -18,10 +18,11 @@ clear
 %amodel='IMAUICE16V2HISTHIGH'
 %aver = 'hist_high_v1'
 
-amodel='IMAUICE16V2HISTMED'
+%amodel='IMAUICE16V2HISTMED'
 %amodel='IMAUICE16v8histmed'
 %amodel='IMAUICE16v09histmed'
 %amodel='IMAUICE16v08histmed'
+amodel='IMAU_CISM16'
 aver = 'hist_med_v1'
 
 %amodel='IMAUICE16V2HISTLOW'
@@ -31,7 +32,7 @@ aver = 'hist_med_v1'
 % scenario setup 2014-2100, including init year 2014
 ts = 87;
 
-%ascenario='MIROC5-rcp85-Rmed'
+ascenario='MIROC5-rcp85-Rmed'
 %ascenario='MIROC5-rcp85-Rhigh'
 %ascenario='MIROC5-rcp85-Rlow'
 
@@ -43,7 +44,7 @@ ts = 87;
 %ascenario='NorESM1-rcp85-Rhigh'
 %ascenario='NorESM1-rcp85-Rlow'
 
-ascenario='HadGEM2-ES-rcp85-Rmed'
+%ascenario='HadGEM2-ES-rcp85-Rmed'
 %ascenario='HadGEM2-ES-rcp85-Rhigh'
 %ascenario='HadGEM2-ES-rcp85-Rlow'
 

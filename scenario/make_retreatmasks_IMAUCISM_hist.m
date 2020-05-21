@@ -16,17 +16,19 @@ clear
 %amodel='IMAUICE16v07histmed'
 %amodel='IMAUICE16v06histmed'
 
-amodel='IMAU_CISM16'
+%amodel='IMAU_CISM16'
+%amodel='IMAU_CISM04'
+amodel='IMAU_CISM04_RDS3'
 
-% hist setup 1959-2014, including init year 1959
+% hist setup 1960-2014, including init year 1960
 % aver is not important here, hist-Rmed, hist-Rhigh, ... are
 % identical in the 3 different aver versions
-aver = 'hist_med_v1'
-ts = 56;
+aver = 'hist_med_v1';
+
 %ascenario='hist-Rmed'
-ascenario='hist-Rhigh'
+%ascenario='hist-Rhigh'
 %ascenario='hist-Rlow'
-%ascenario='hist-Rzero'
+ascenario='hist-Rzero'
 
 
 % flag for plotting 
@@ -53,7 +55,8 @@ NW = bas.IDs == 7;
 % load regional retreats
 load(['../Rates/' aver '/' ascenario '/retreat.mat']);
 % variable retreat is positive for a retreating glacier  
-rs = - hist_retreat(:,1:ts);
+% CISM runs start at 1960!
+rs = - hist_retreat(:,2:56);
 nor = rs(1,:);
 ner = rs(2,:);
 cer = rs(3,:);
@@ -73,11 +76,8 @@ nx = size(ima.sftgif,1);
 ny = size(ima.sftgif,2);
 nt = size(rs,2);
 
-% scenarios
-%time = 2014:1:2100; 
-
 % historical
-time = 1959:1:2014; 
+time = 1960:1:2014; 
 
 nxm = length(g1.x);
 nym = length(g1.y);
