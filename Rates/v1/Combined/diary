@@ -1,0 +1,563 @@
+ls
+April10  May15	meta_plot_retreat.m  save_retreat.m
+diary	 May16	plot_retreat_func.m  save_TF.m
+
+save_retreat
+
+IDs =
+
+  1×7 cell array
+
+    'NO'    'NE'    'CE'    'SE'    'SW'    'CW'    'NW'
+
+ls
+April10  May15	meta_plot_retreat.m  save_retreat.m
+diary	 May16	plot_retreat_func.m  save_TF.m
+
+ls ../
+ACCESS1.3-rcp85-Rhigh	 CSIRO-Mk3.6-rcp85-Rmed   MIROC5-rcp85-Rmed
+ACCESS1.3-rcp85-Rlow	 HadGEM2-ES-rcp85-Rhigh   NorESM1-rcp85-Rhigh
+ACCESS1.3-rcp85-Rmed	 HadGEM2-ES-rcp85-Rlow	  NorESM1-rcp85-Rlow
+CNRM-CM6-ssp126-Rhigh	 HadGEM2-ES-rcp85-Rmed	  NorESM1-rcp85-Rmed
+CNRM-CM6-ssp126-Rlow	 IPSL-CM5-MR-rcp85-Rhigh  Region_IDs.txt
+CNRM-CM6-ssp126-Rmed	 IPSL-CM5-MR-rcp85-Rlow   TF_MIROC5-rcp26.dat
+CNRM-CM6-ssp585-Rhigh	 IPSL-CM5-MR-rcp85-Rmed   TF_MIROC5-rcp26.mat
+CNRM-CM6-ssp585-Rlow	 MIROC5-rcp26-Rhigh	  TF_MIROC5-rcp85.dat
+CNRM-CM6-ssp585-Rmed	 MIROC5-rcp26-Rlow	  TF_MIROC5-rcp85.mat
+Combined		 MIROC5-rcp26-Rmed	  TF_NorESM1-rcp85.dat
+CSIRO-Mk3.6-rcp85-Rhigh  MIROC5-rcp85-Rhigh	  TF_NorESM1-rcp85.mat
+CSIRO-Mk3.6-rcp85-Rlow	 MIROC5-rcp85-Rlow	  ZERO
+
+lt -rtl ../
+{Matrix dimensions must agree.
+} 
+ls -rtl ../
+total 128
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 CSIRO-Mk3.6-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 CSIRO-Mk3.6-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 CSIRO-Mk3.6-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 HadGEM2-ES-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 HadGEM2-ES-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 HadGEM2-ES-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 IPSL-CM5-MR-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 IPSL-CM5-MR-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 IPSL-CM5-MR-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp26-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp26-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp26-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 NorESM1-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 NorESM1-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 NorESM1-rcp85-Rmed
+-rw-r--r-- 1 hgoelzer fz040   53 May  9 09:41 Region_IDs.txt
+-rw-r--r-- 1 hgoelzer fz040 9095 May  9 09:41 TF_MIROC5-rcp26.dat
+-rw-r--r-- 1 hgoelzer fz040 4205 May  9 09:41 TF_MIROC5-rcp26.mat
+-rw-r--r-- 1 hgoelzer fz040 9088 May  9 09:41 TF_MIROC5-rcp85.dat
+-rw-r--r-- 1 hgoelzer fz040 4257 May  9 09:41 TF_MIROC5-rcp85.mat
+-rw-r--r-- 1 hgoelzer fz040 9090 May  9 09:41 TF_NorESM1-rcp85.dat
+-rw-r--r-- 1 hgoelzer fz040 4233 May  9 09:41 TF_NorESM1-rcp85.mat
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 ZERO
+drwxr-xr-x 5 hgoelzer fz040   10 May 21 09:41 Combined
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 ACCESS1.3-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 ACCESS1.3-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 ACCESS1.3-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp585-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp585-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp585-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp126-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp126-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp126-Rlow
+
+pwd
+
+ans =
+
+    '/svub4/hgoelzer/CMIP/ISMIP6/Projections/Greenland/Processing/OGR/ismip6-gris-ocean-forcing/Rates/v1/Combined'
+
+exit
+in = load('Aug20/projected_retreat.mat');
+whos
+  Name      Size             Bytes  Class     Attributes
+
+  in        1x1             294464  struct              
+
+in
+
+in = 
+
+  struct with fields:
+
+    retreat: [1×1 struct]
+
+in.retreat
+
+ans = 
+
+  struct with fields:
+
+        time: [1×151 double]
+      MIROC5: [1×1 struct]
+      NorESM: [1×1 struct]
+      HadGEM: [1×1 struct]
+       CSIRO: [1×1 struct]
+      IPSLCM: [1×1 struct]
+      ACCESS: [1×1 struct]
+     CNRMCM6: [1×1 struct]
+    CNRMESM2: [1×1 struct]
+      UKESM1: [1×1 struct]
+     regions: [1×7 struct]
+
+in.retreat.CNRMESM2
+
+ans = 
+
+  struct with fields:
+
+    ssp585: [1×1 struct]
+
+in.retreat.CNRMESM2.ssp585
+
+ans = 
+
+  struct with fields:
+
+     low: [8×151 single]
+     med: [8×151 single]
+    high: [8×151 single]
+      TF: [7×151 single]
+
+save_retreat
+
+IDs =
+
+  1×7 cell array
+
+    'NO'    'NE'    'CE'    'SE'    'SW'    'CW'    'NW'
+
+lt
+{Error using <
+Not enough input arguments.
+} 
+ls ../
+ACCESS1.3-rcp85-Rhigh	 HadGEM2-ES-rcp85-Rmed	  TF_CNRM-CM6-ssp585.dat
+ACCESS1.3-rcp85-Rlow	 IPSL-CM5-MR-rcp85-Rhigh  TF_CNRM-CM6-ssp585.mat
+ACCESS1.3-rcp85-Rmed	 IPSL-CM5-MR-rcp85-Rlow   TF_CSIRO-Mk3.6-rcp85.dat
+CNRM-CM6-ssp126-Rhigh	 IPSL-CM5-MR-rcp85-Rmed   TF_CSIRO-Mk3.6-rcp85.mat
+CNRM-CM6-ssp126-Rlow	 MIROC5-rcp26-Rhigh	  TF_HadGEM2-ES-rcp85.dat
+CNRM-CM6-ssp126-Rmed	 MIROC5-rcp26-Rlow	  TF_HadGEM2-ES-rcp85.mat
+CNRM-CM6-ssp585-Rhigh	 MIROC5-rcp26-Rmed	  TF_IPSL-CM5-MR-rcp85.dat
+CNRM-CM6-ssp585-Rlow	 MIROC5-rcp85-Rhigh	  TF_IPSL-CM5-MR-rcp85.mat
+CNRM-CM6-ssp585-Rmed	 MIROC5-rcp85-Rlow	  TF_MIROC5-rcp26.dat
+CNRM-ESM2-ssp585-Rhigh	 MIROC5-rcp85-Rmed	  TF_MIROC5-rcp26.mat
+CNRM-ESM2-ssp585-Rlow	 NorESM1-rcp85-Rhigh	  TF_MIROC5-rcp85.dat
+CNRM-ESM2-ssp585-Rmed	 NorESM1-rcp85-Rlow	  TF_MIROC5-rcp85.mat
+Combined		 NorESM1-rcp85-Rmed	  TF_NorESM1-rcp85.dat
+CSIRO-Mk3.6-rcp85-Rhigh  Region_IDs.txt		  TF_NorESM1-rcp85.mat
+CSIRO-Mk3.6-rcp85-Rlow	 TF_ACCESS1.3-rcp85.dat   UKESM1-CM6-ssp585-Rhigh
+CSIRO-Mk3.6-rcp85-Rmed	 TF_ACCESS1.3-rcp85.mat   UKESM1-CM6-ssp585-Rlow
+HadGEM2-ES-rcp85-Rhigh	 TF_CNRM-CM6-ssp126.dat   UKESM1-CM6-ssp585-Rmed
+HadGEM2-ES-rcp85-Rlow	 TF_CNRM-CM6-ssp126.mat   ZERO
+
+ls -rtl ../
+total 225
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 CSIRO-Mk3.6-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 CSIRO-Mk3.6-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 CSIRO-Mk3.6-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 HadGEM2-ES-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 HadGEM2-ES-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 HadGEM2-ES-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 IPSL-CM5-MR-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 IPSL-CM5-MR-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 IPSL-CM5-MR-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp26-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp26-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp26-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 MIROC5-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 NorESM1-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 NorESM1-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 NorESM1-rcp85-Rmed
+-rw-r--r-- 1 hgoelzer fz040   53 May  9 09:41 Region_IDs.txt
+drwxr-xr-x 2 hgoelzer fz040    3 May  9 09:41 ZERO
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 ACCESS1.3-rcp85-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 ACCESS1.3-rcp85-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 ACCESS1.3-rcp85-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp585-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp585-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp585-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp126-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp126-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 May 21 10:14 CNRM-CM6-ssp126-Rlow
+-rw-r--r-- 1 hgoelzer fz040 4257 Jun  4 09:14 TF_MIROC5-rcp85.mat
+-rw-r--r-- 1 hgoelzer fz040 9088 Jun  4 09:14 TF_MIROC5-rcp85.dat
+-rw-r--r-- 1 hgoelzer fz040 4205 Jun  4 09:14 TF_MIROC5-rcp26.mat
+-rw-r--r-- 1 hgoelzer fz040 9095 Jun  4 09:14 TF_MIROC5-rcp26.dat
+-rw-r--r-- 1 hgoelzer fz040 4233 Jun  4 09:14 TF_NorESM1-rcp85.mat
+-rw-r--r-- 1 hgoelzer fz040 9090 Jun  4 09:14 TF_NorESM1-rcp85.dat
+-rw-r--r-- 1 hgoelzer fz040 4235 Jun  4 09:14 TF_HadGEM2-ES-rcp85.mat
+-rw-r--r-- 1 hgoelzer fz040 9101 Jun  4 09:14 TF_HadGEM2-ES-rcp85.dat
+-rw-r--r-- 1 hgoelzer fz040 4286 Jun  4 09:14 TF_CSIRO-Mk3.6-rcp85.mat
+-rw-r--r-- 1 hgoelzer fz040 9106 Jun  4 09:14 TF_CSIRO-Mk3.6-rcp85.dat
+-rw-r--r-- 1 hgoelzer fz040 4268 Jun  4 09:14 TF_IPSL-CM5-MR-rcp85.mat
+-rw-r--r-- 1 hgoelzer fz040 9102 Jun  4 09:14 TF_IPSL-CM5-MR-rcp85.dat
+-rw-r--r-- 1 hgoelzer fz040 4253 Jun  4 09:14 TF_ACCESS1.3-rcp85.mat
+-rw-r--r-- 1 hgoelzer fz040 9085 Jun  4 09:14 TF_ACCESS1.3-rcp85.dat
+-rw-r--r-- 1 hgoelzer fz040 4266 Jun  4 09:14 TF_CNRM-CM6-ssp585.mat
+-rw-r--r-- 1 hgoelzer fz040 9086 Jun  4 09:14 TF_CNRM-CM6-ssp585.dat
+-rw-r--r-- 1 hgoelzer fz040 4210 Jun  4 09:14 TF_CNRM-CM6-ssp126.mat
+-rw-r--r-- 1 hgoelzer fz040 9083 Jun  4 09:14 TF_CNRM-CM6-ssp126.dat
+drwxr-xr-x 6 hgoelzer fz040   11 Aug 20 16:25 Combined
+drwxr-xr-x 2 hgoelzer fz040    3 Aug 20 16:25 CNRM-ESM2-ssp585-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 Aug 20 16:25 CNRM-ESM2-ssp585-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 Aug 20 16:25 CNRM-ESM2-ssp585-Rlow
+drwxr-xr-x 2 hgoelzer fz040    3 Aug 20 16:25 UKESM1-CM6-ssp585-Rmed
+drwxr-xr-x 2 hgoelzer fz040    3 Aug 20 16:25 UKESM1-CM6-ssp585-Rhigh
+drwxr-xr-x 2 hgoelzer fz040    3 Aug 20 16:25 UKESM1-CM6-ssp585-Rlow
+
+ls -rtl ../UKESM1-CM6-ssp585-Rmed
+total 4
+-rw-r--r-- 1 hgoelzer fz040 2696 Aug 20 16:25 retreat.mat
+
+ls -rtl ../UKESM1-CM6-ssp585-Rmed/retreat.mat
+-rw-r--r-- 1 hgoelzer fz040 2696 Aug 20 16:25 ../UKESM1-CM6-ssp585-Rmed/retreat.mat
+
+clear
+load ../UKESM1-CM6-ssp585-Rmed/retreat.mat
+whos
+  Name         Size            Bytes  Class     Attributes
+
+  IDs          1x7               812  cell                
+  retreat      7x87             2436  single              
+  time         1x87              696  double              
+
+IDs
+
+IDs =
+
+  1×7 cell array
+
+    'NO'    'NE'    'CE'    'SE'    'SW'    'CW'    'NW'
+
+retreat
+
+retreat =
+
+  7×87 single matrix
+
+  Columns 1 through 8
+
+         0   -0.0155    0.0363    0.0499    0.0106   -0.0059   -0.0244   -0.0721
+         0   -0.0426   -0.0699   -0.1238   -0.2291   -0.2487   -0.2458   -0.3371
+         0   -0.3162   -0.4890   -0.5386   -0.7680   -0.8061   -0.8679   -0.9858
+         0   -0.2171   -0.4076   -0.3962   -0.5523   -0.5198   -0.4987   -0.5585
+         0   -0.2146   -0.6404   -0.8957   -1.1364   -1.1160   -1.4167   -1.6335
+         0   -0.1929   -0.2587   -0.2930   -0.5247   -0.5268   -0.6433   -0.9155
+         0   -0.0640   -0.0614   -0.0795   -0.1863   -0.2295   -0.2727   -0.3846
+
+  Columns 9 through 16
+
+   -0.0551   -0.1297   -0.1417   -0.2361   -0.2126   -0.2342   -0.3474   -0.4165
+   -0.4341   -0.5886   -0.6411   -0.7779   -0.7976   -0.8371   -0.9700   -1.1021
+   -1.1781   -1.5787   -1.8214   -2.4983   -2.8069   -3.1356   -3.5434   -3.9689
+   -0.6089   -1.0415   -1.0587   -1.6589   -1.9739   -2.3421   -2.6613   -2.9121
+   -1.5883   -2.3134   -2.5146   -3.1495   -3.8825   -4.4567   -4.9285   -5.4375
+   -1.0304   -1.4144   -1.5091   -1.9768   -2.1751   -2.4850   -2.9792   -3.3519
+   -0.4464   -0.6201   -0.6530   -0.8193   -0.8221   -0.8902   -1.0210   -1.0761
+
+  Columns 17 through 24
+
+   -0.5223   -0.6307   -0.8142   -0.8523   -0.9752   -1.1206   -1.2138   -1.3755
+   -1.2558   -1.4207   -1.5910   -1.6144   -1.7228   -1.8888   -2.0018   -2.2043
+   -4.3522   -4.8760   -5.2909   -5.4991   -5.8154   -6.1958   -6.4965   -6.9908
+   -3.1815   -3.5782   -3.9373   -4.2275   -4.6353   -5.0348   -5.2887   -5.9528
+   -5.9396   -6.7010   -7.1628   -7.4976   -8.2092   -8.8841   -9.1275   -9.8558
+   -3.7450   -4.1242   -4.5038   -4.7008   -4.9868   -5.2617   -5.4110   -5.8943
+   -1.2302   -1.3106   -1.4324   -1.5072   -1.5981   -1.7036   -1.7678   -1.9031
+
+  Columns 25 through 32
+
+   -1.5017   -1.7377   -1.8247   -1.9210   -2.0711   -2.1658   -2.2454   -2.3824
+   -2.3852   -2.7075   -2.9891   -3.1951   -3.4118   -3.5819   -3.7126   -3.8523
+   -7.2314   -7.6290   -8.0054   -8.3453   -8.6853   -8.7726   -8.8115   -8.6355
+   -6.2237   -6.4978   -6.8854   -7.1058   -7.3535   -7.2759   -7.3165   -7.0528
+  -10.3175  -10.9339  -11.4613  -11.7636  -12.1131  -11.9231  -11.9922  -11.9595
+   -6.0924   -6.5784   -6.7931   -6.8681   -7.0596   -7.0426   -7.0819   -7.0483
+   -1.9943   -2.1866   -2.2383   -2.2617   -2.3368   -2.3380   -2.3720   -2.4272
+
+  Columns 33 through 40
+
+   -2.6077   -2.7257   -2.9092   -3.1843   -3.4062   -3.6050   -3.8088   -4.1576
+   -4.1127   -4.3816   -4.6244   -4.9922   -5.3066   -5.6191   -5.9681   -6.3547
+   -8.7307   -8.8562   -8.9601   -9.3599   -9.6868   -9.8456  -10.1010  -10.3810
+   -6.9780   -7.0297   -7.0619   -7.3987   -7.8112   -8.2156   -8.5173   -8.6821
+  -11.7092  -11.8589  -12.0241  -12.0882  -12.6373  -13.1984  -13.4205  -13.8010
+   -7.2101   -7.2720   -7.2036   -7.2569   -7.3297   -7.5520   -7.6058   -7.9219
+   -2.5812   -2.6716   -2.7807   -2.9317   -3.0446   -3.1935   -3.2677   -3.4709
+
+  Columns 41 through 48
+
+   -4.6070   -4.9141   -5.1259   -5.3311   -5.6620   -6.0431   -6.4603   -6.9887
+   -6.7792   -7.0797   -7.4562   -7.6808   -7.9690   -8.1700   -8.3075   -8.6401
+  -10.7391  -11.0081  -11.4016  -11.8144  -12.4339  -12.8530  -13.1200  -13.5953
+   -8.8117   -9.0925   -9.5331   -9.9155  -10.5699  -11.0847  -11.4919  -12.0956
+  -13.7056  -14.0358  -14.7812  -15.0608  -15.7279  -16.3745  -16.8320  -17.6717
+   -8.1151   -8.2280   -8.6097   -8.8014   -9.1911   -9.4365   -9.6476  -10.1316
+   -3.6810   -3.8265   -4.0194   -4.1746   -4.3678   -4.5438   -4.7536   -5.0328
+
+  Columns 49 through 56
+
+   -7.5543   -8.1164   -8.7965   -9.4266  -10.0779  -10.7178  -11.3433  -11.9343
+   -8.9924   -9.3017   -9.7737  -10.2362  -10.6507  -11.1482  -11.6562  -12.1021
+  -13.9981  -14.4944  -15.3357  -16.0135  -16.5618  -17.1344  -17.7171  -18.0613
+  -12.6196  -13.3828  -14.2760  -15.0341  -15.7979  -16.4130  -17.0443  -17.3076
+  -18.4142  -19.3446  -20.2937  -21.0885  -22.2565  -22.9387  -23.7890  -24.2539
+  -10.5625  -11.0248  -11.6297  -12.0628  -12.5435  -13.1329  -13.8410  -14.3365
+   -5.3388   -5.6605   -6.0046   -6.2655   -6.5633   -6.8280   -7.1587   -7.4058
+
+  Columns 57 through 64
+
+  -12.5200  -13.2584  -13.7909  -14.3336  -14.8066  -15.3265  -16.2001  -16.9931
+  -12.5928  -13.0960  -13.6498  -14.1682  -14.5881  -15.0928  -15.5496  -16.0684
+  -18.5366  -19.1339  -19.9382  -20.6557  -21.0315  -21.6846  -22.2258  -22.6028
+  -17.6453  -17.9983  -18.7523  -19.6478  -20.1756  -20.6977  -21.2717  -21.4466
+  -24.5551  -24.9083  -25.7252  -26.6359  -27.5043  -28.0149  -28.6569  -28.8393
+  -14.9248  -15.5981  -16.3363  -17.1449  -18.1141  -19.0084  -19.8991  -20.4963
+   -7.6603   -8.0267   -8.3138   -8.6461   -9.0007   -9.3531   -9.8039  -10.1525
+
+  Columns 65 through 72
+
+  -17.8469  -18.5920  -19.5912  -20.2753  -21.0293  -21.9498  -22.7044  -23.2047
+  -16.5825  -17.1258  -17.8961  -18.5080  -18.9974  -19.5999  -19.9869  -20.4019
+  -22.9827  -23.5951  -24.3790  -25.1637  -25.6590  -26.2513  -26.6068  -27.1554
+  -21.7510  -22.2694  -22.9438  -23.5598  -24.0405  -24.4744  -24.7805  -25.2381
+  -29.3562  -29.8648  -30.4677  -31.0566  -31.5815  -32.2058  -32.5209  -33.0342
+  -21.2739  -21.8655  -22.9479  -23.5476  -24.2331  -25.3165  -26.1123  -26.8957
+  -10.6194  -10.9883  -11.5929  -11.9787  -12.3930  -13.0094  -13.5171  -13.9283
+
+  Columns 73 through 80
+
+  -23.9914  -24.7379  -25.2751  -26.0148  -26.6937  -27.5181  -28.0074  -28.5261
+  -20.9202  -21.3903  -21.6774  -21.9442  -22.1478  -22.5793  -22.6309  -22.8476
+  -27.9222  -28.9106  -29.5503  -30.1758  -30.7330  -31.4764  -31.5361  -31.8622
+  -25.7571  -26.6448  -27.2269  -28.1553  -28.7484  -29.4673  -29.6019  -29.6912
+  -33.3712  -34.1386  -34.5060  -35.5783  -36.2925  -37.0017  -37.3389  -37.5198
+  -27.8108  -28.8133  -29.5379  -30.4589  -31.3193  -32.3372  -32.7322  -33.0860
+  -14.4662  -15.0447  -15.4684  -16.0171  -16.5409  -17.0999  -17.4458  -17.7415
+
+  Columns 81 through 87
+
+  -28.9957  -29.5730  -29.9536  -30.4216  -30.6871  -31.0166  -31.0467
+  -23.0829  -23.3115  -23.5864  -23.8531  -24.0701  -24.2967  -24.2527
+  -32.3453  -32.5482  -32.9382  -33.4465  -33.8588  -34.1621  -34.4098
+  -30.0825  -30.2933  -30.5369  -31.0695  -31.3939  -31.6673  -31.7423
+  -37.7857  -38.0388  -38.1694  -38.9492  -39.1412  -39.2901  -39.3641
+  -33.2981  -33.5597  -33.8204  -34.4235  -34.7414  -35.4528  -35.5995
+  -18.0115  -18.3064  -18.5411  -18.9191  -19.1122  -19.4562  -19.5093
+
+shade(retreat)
+[Warning: MATLAB has disabled some advanced graphics rendering features by switching
+to software OpenGL. For more information, click <a
+href="matlab:opengl('problems')">here</a>.] 
+save_TF
+
+IDs =
+
+  1×7 cell array
+
+    'NO'    'NE'    'CE'    'SE'    'SW'    'CW'    'NW'
+
+exit
+in = load('Oct16/projected_retreat.mat');
+in
+
+in = 
+
+  struct with fields:
+
+    retreat: [1×1 struct]
+
+in.retreat
+
+ans = 
+
+  struct with fields:
+
+        time: [1×151 double]
+      MIROC5: [1×1 struct]
+      NorESM: [1×1 struct]
+      HadGEM: [1×1 struct]
+       CSIRO: [1×1 struct]
+      IPSLCM: [1×1 struct]
+      ACCESS: [1×1 struct]
+     CNRMCM6: [1×1 struct]
+    CNRMESM2: [1×1 struct]
+      UKESM1: [1×1 struct]
+       CESM2: [1×1 struct]
+     regions: [1×7 struct]
+
+in.retreat.CESM2
+
+ans = 
+
+  struct with fields:
+
+    ssp585: [1×1 struct]
+
+save_retreat
+
+IDs =
+
+  1×7 cell array
+
+    'NO'    'NE'    'CE'    'SE'    'SW'    'CW'    'NW'
+
+ls ../
+ACCESS1.3-rcp85-Rhigh	 HadGEM2-ES-rcp85-Rmed	  TF_CNRM-ESM2-ssp585.mat
+ACCESS1.3-rcp85-Rlow	 IPSL-CM5-MR-rcp85-Rhigh  TF_CSIRO-Mk3.6-rcp85.dat
+ACCESS1.3-rcp85-Rmed	 IPSL-CM5-MR-rcp85-Rlow   TF_CSIRO-Mk3.6-rcp85.mat
+CESM2-ssp585-Rhigh	 IPSL-CM5-MR-rcp85-Rmed   TF_HadGEM2-ES-rcp85.dat
+CESM2-ssp585-Rlow	 MIROC5-rcp26-Rhigh	  TF_HadGEM2-ES-rcp85.mat
+CESM2-ssp585-Rmed	 MIROC5-rcp26-Rlow	  TF_IPSL-CM5-MR-rcp85.dat
+CNRM-CM6-ssp126-Rhigh	 MIROC5-rcp26-Rmed	  TF_IPSL-CM5-MR-rcp85.mat
+CNRM-CM6-ssp126-Rlow	 MIROC5-rcp85-Rhigh	  TF_MIROC5-rcp26.dat
+CNRM-CM6-ssp126-Rmed	 MIROC5-rcp85-Rlow	  TF_MIROC5-rcp26.mat
+CNRM-CM6-ssp585-Rhigh	 MIROC5-rcp85-Rmed	  TF_MIROC5-rcp85.dat
+CNRM-CM6-ssp585-Rlow	 NorESM1-rcp85-Rhigh	  TF_MIROC5-rcp85.mat
+CNRM-CM6-ssp585-Rmed	 NorESM1-rcp85-Rlow	  TF_NorESM1-rcp85.dat
+CNRM-ESM2-ssp585-Rhigh	 NorESM1-rcp85-Rmed	  TF_NorESM1-rcp85.mat
+CNRM-ESM2-ssp585-Rlow	 Region_IDs.txt		  TF_UKESM1-CM6-ssp585.dat
+CNRM-ESM2-ssp585-Rmed	 TF_ACCESS1.3-rcp85.dat   TF_UKESM1-CM6-ssp585.mat
+Combined		 TF_ACCESS1.3-rcp85.mat   UKESM1-CM6-ssp585-Rhigh
+CSIRO-Mk3.6-rcp85-Rhigh  TF_CNRM-CM6-ssp126.dat   UKESM1-CM6-ssp585-Rlow
+CSIRO-Mk3.6-rcp85-Rlow	 TF_CNRM-CM6-ssp126.mat   UKESM1-CM6-ssp585-Rmed
+CSIRO-Mk3.6-rcp85-Rmed	 TF_CNRM-CM6-ssp585.dat   ZERO
+HadGEM2-ES-rcp85-Rhigh	 TF_CNRM-CM6-ssp585.mat
+HadGEM2-ES-rcp85-Rlow	 TF_CNRM-ESM2-ssp585.dat
+
+ls ../CNRM-CM6-ssp585-Rlow
+retreat.mat
+
+
+CESM2-ssp585-Rhigh/  CESM2-ssp585-Rlow/   CESM2-ssp585-Rmed/   
+
+No completions found.
+ls ../CESM2-ssp585-R
+{Error using ls (line 35)
+ls: cannot access ../CESM2-ssp585-R: No such file or directory
+} 
+ls ../CESM2-ssp585-Rmed
+retreat.mat
+
+save_TF
+
+IDs =
+
+  1×7 cell array
+
+    'NO'    'NE'    'CE'    'SE'    'SW'    'CW'    'NW'
+
+in = load('Apr17_2020/projected_retreat.mat');
+
+% sort by regions
+reorder = [7,5,3,1,2,4,6];
+IDs = {in.retreat.regions(reorder).name}
+
+IDs =
+
+  1x7 cell array
+
+    {'NO'}    {'NE'}    {'CE'}    {'SE'}    {'SW'}    {'CW'}    {'NW'}
+
+time = 1950:2100;
+time = time(65:151);
+whos
+  Name         Size             Bytes  Class     Attributes
+
+  IDs          1x7                812  cell                
+  in           1x1             434436  struct              
+  reorder      1x7                 56  double              
+  time         1x87               696  double              
+
+in
+
+in = 
+
+  struct with fields:
+
+    retreat: [1x1 struct]
+
+in.retreat
+
+ans = 
+
+  struct with fields:
+
+        time: [1x151 double]
+      MIROC5: [1x1 struct]
+      NorESM: [1x1 struct]
+      HadGEM: [1x1 struct]
+       CSIRO: [1x1 struct]
+      IPSLCM: [1x1 struct]
+      ACCESS: [1x1 struct]
+     CNRMCM6: [1x1 struct]
+    CNRMESM2: [1x1 struct]
+      UKESM1: [1x1 struct]
+       CESM2: [1x1 struct]
+     regions: [1x7 struct]
+
+in.retreat.MIROC5
+
+ans = 
+
+  struct with fields:
+
+    RCP26: [1x1 struct]
+    RCP85: [1x1 struct]
+
+in.retreat.MIROC5.RCP85
+
+ans = 
+
+  struct with fields:
+
+     p5: [8x151 single]
+    p25: [8x151 single]
+    p50: [8x151 single]
+    p75: [8x151 single]
+    p95: [8x151 single]
+     TF: [7x151 single]
+
+save_retreat
+
+IDs =
+
+  1x7 cell array
+
+    {'NO'}    {'NE'}    {'CE'}    {'SE'}    {'SW'}    {'CW'}    {'NW'}
+
+{Error using save
+Cannot create 'retreat.mat' because '../CSIRO-Mk3.6-rcp85-Rp5' does not exist.
+
+Error in save_retreat (line 127)
+save(['../CSIRO-Mk3.6-rcp85-Rp5/retreat.mat'],'retreat','IDs','time');
+} 
+save_retreat
+
+IDs =
+
+  1x7 cell array
+
+    {'NO'}    {'NE'}    {'CE'}    {'SE'}    {'SW'}    {'CW'}    {'NW'}
+
+mkdir: cannot create directory ‘../MIROC5-rcp85-Rp5’: File exists
+mkdir: cannot create directory ‘../MIROC5-rcp85-Rp95’: File exists
+mkdir: cannot create directory ‘../MIROC5-rcp26-Rp5’: File exists
+mkdir: cannot create directory ‘../MIROC5-rcp26-Rp95’: File exists
+mkdir: cannot create directory ‘../NorESM1-rcp85-Rp5’: File exists
+mkdir: cannot create directory ‘../NorESM1-rcp85-Rp95’: File exists
+mkdir: cannot create directory ‘../HadGEM2-ES-rcp85-Rp5’: File exists
+mkdir: cannot create directory ‘../HadGEM2-ES-rcp85-Rp95’: File exists
+exit
