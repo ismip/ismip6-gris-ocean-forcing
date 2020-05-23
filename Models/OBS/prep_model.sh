@@ -6,4 +6,5 @@
 outfile=sftgif.nc
 
 # extract inital ice mask
-cp ../../Data/BedMachine/sftgif_BedMachineGreenland_01000m.nc ${outfile}
+cp ../../Data/BedMachine/sftgrf_BedMachineGreenland_01000m.nc ${outfile}
+ncrename -v sftgrf,sftgif ${outfile}

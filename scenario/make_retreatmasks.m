@@ -3,9 +3,7 @@
  
 clear
 
-%amodel='OBS'
-
-amodel='IMAUICE16'
+amodel='OBS'
 ascenario='MIROC5-rcp85-Rmed'
 aver = 'v1'
 
@@ -20,7 +18,7 @@ caldays = load('../Data/Grid/days_1900-2300.txt');
 filename=['../Models/' amodel '/retreatmasks_' ascenario '_' amodel '.nc'];
 
 % load Basin masks
-bas = ncload(['../Data/Basins/ISMIP6_Ocean_Regions_01000m.nc']);
+bas = ncload(['../Data/Basins/ISMIP6_Ocean_Regions_0d6km.nc']);
 
 NO = bas.IDs == 1;
 NE = bas.IDs == 2;
@@ -43,13 +41,14 @@ cwr = rs(6,:);
 nwr = rs(7,:);
 
 % load ice mask
-ima = ncload(['../Models/' amodel '/sftgif_01000m.nc']);
-dist = ncload(['../Models/' amodel '/dist_0d6_ISMIP6_GrIS_01km.nc']);
-wght = ncload(['../Models/' amodel '/weight_0d6_ISMIP6_GrIS_01km.nc']);
+ima = ncload(['../Models/' amodel '/sftgif_0d6.nc']);
+g1 = ncload(['../Models/' amodel '/sftgif.nc']);
+dist = ncload(['../Models/' amodel '/dist0d6km_M.nc']);
+wght = ncload(['../Models/' amodel '/weight_0d6_ISMIP6_GrIS.nc']);
 wght = max(wght.ww,0);
 
-nx = size(ima.grmask,1);
-ny = size(ima.grmask,2);
+nx = size(ima.sftgif,1);
+ny = size(ima.sftgif,2);
 nt = size(rs,2);
 time = 2014:1:2100; 
 
@@ -57,7 +56,7 @@ nxm = length(g1.x);
 nym = length(g1.y);
 
 [y,x] = meshgrid(double(dist.y),double(dist.x));
-[yB, xB] = meshgrid(g1.y, g1.x);
+[yB, xB] = meshgrid(double(g1.y), double(g1.x));
 
 % output on model grid
 refr3 = single(zeros(nxm,nym,nt));
@@ -65,63 +64,52 @@ refr3 = single(zeros(nxm,nym,nt));
 for k=1:nt
 %for k=1:1
     k
+    refr2 = single(zeros(nx,ny));
+
 % retreat after n years
-    retr = (dist.dist_bin < nor(k));
+    retr = (dist.dist < nor(k));
     refr = max(double(ima.sftgif) - retr.*wght,0);
-    refr3(:,:,k) = refr3(:,:,k) + refr.*NO;
-%    shade(refr3(:,:,k))
+    refr2(:,:) = refr2(:,:) + refr.*NO;
+%    shade(refr2(:,:,k))
 
-    retr = (dist.dist_bin < ner(k));
+    retr = (dist.dist < ner(k));
     refr = max(double(ima.sftgif) - retr.*wght ,0);
-    refr3(:,:,k) = refr3(:,:,k) + refr.*NE;
-%    shade(refr3(:,:,k))
+    refr2(:,:) = refr2(:,:) + refr.*NE;
 
-    retr = (dist.dist_bin < cer(k));
+    retr = (dist.dist < cer(k));
     refr = max(double(ima.sftgif) - retr.*wght ,0);
-    refr3(:,:,k) = refr3(:,:,k) + refr.*CE;
-%    shade(refr3(:,:,k))
+    refr2(:,:) = refr2(:,:) + refr.*CE;
 
-    retr = (dist.dist_bin < ser(k));
+    retr = (dist.dist < ser(k));
     refr = max(double(ima.sftgif) - retr.*wght ,0);
-    refr3(:,:,k) = refr3(:,:,k) + refr.*SE;
-%    shade(refr3(:,:,k))
+    refr2(:,:) = refr2(:,:) + refr.*SE;
 
-    retr = (dist.dist_bin < swr(k));
+    retr = (dist.dist < swr(k));
     refr = max(double(ima.sftgif) - retr.*wght ,0);
-    refr3(:,:,k) = refr3(:,:,k) + refr.*SW;
-%    shade(refr3(:,:,k))
+    refr2(:,:) = refr2(:,:) + refr.*SW;
 
-    retr = (dist.dist_bin < cwr(k));
+    retr = (dist.dist < cwr(k));
     refr = max(double(ima.sftgif) - retr.*wght ,0);
-    refr3(:,:,k) = refr3(:,:,k) + refr.*CW;
+    refr2(:,:) = refr2(:,:) + refr.*CW;
 
-    retr = (dist.dist_bin < nwr(k));
+    retr = (dist.dist < nwr(k));
     refr = max(double(ima.sftgif) - retr.*wght ,0);
-    refr3(:,:,k) = refr3(:,:,k) + refr.*NW;
-end
+    refr2(:,:) = refr2(:,:) + refr.*NW;
 
-shade(refr3(:,:,k))
+%    shade(refr2(:,:))
 
-if (flg_plot);
+    
+% Matlab interpolation and weight creation 0d6 -> model grid
+mask = double(refr2>0.);
 
-    % plot retreats
-    co = get(0,'DefaultAxesColorOrder');
-    figure
-    hold on; box on;
-    plot(time,nor,'Color',co(1,:))
-    plot(time,ner,'Color',co(2,:))
-    plot(time,cer,'Color',co(3,:))
-    plot(time,ser,'Color',co(4,:))
-    plot(time,swr,'Color',co(5,:))
-    plot(time,cwr,'Color',co(6,:))
-    plot(time,nwr,'Color',co(7,:))
-    legend({'NO','NE','CE','SE','SW','CW','NW'},'Location','nw')
+% remap mask with binning
+wmask = binToMatrix(y,x,mask,yB,xB);
+wmask(~isfinite(wmask))=0.;
+
+refr3(:,:,k) = wmask;
 
 end
 
-% time axis
-timestamp = caldays(time-1900+1,3);
-time_bounds = [caldays(time-1900+1,2), caldays(time-1900+2,2)];
 
 if (flg_plot)
     % plot retreats
@@ -141,7 +129,7 @@ end
 if exist(filename)
      delete(filename)
 end
-nccreate(filename,'sftgif', 'Dimensions', {'x', nxm, 'y', nym, 'time', inf},'Datatype','single');
+nccreate(filename,'sftgif', 'Dimensions', {'x', nxm, 'y', nym, 'time', inf},'Datatype','single','DeflateLevel',1);
 nccreate(filename,'time', 'Dimensions', {'time', inf});
 ncwrite(filename, 'sftgif', refr3);
 ncwrite(filename, 'time', time*31556926.);
