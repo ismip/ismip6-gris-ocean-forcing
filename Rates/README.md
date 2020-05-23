@@ -6,5 +6,5 @@ with relative ice front positions every year (0:1:105) for 7 regions [NO, NE, CE
 ### Test scenario (1995-2100)
 `test00/`
 
-### First GMC forcing retreat (MIROC5, 2015-2100)
+### First GCM forcing retreat (MIROC5, 2015-2100)
 `v1`
